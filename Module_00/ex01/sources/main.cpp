@@ -6,11 +6,12 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:48:55 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/23 19:31:52 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/24 09:49:40 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <limits>
 
 int	main(void)
 {
@@ -25,7 +26,7 @@ int	main(void)
 			book.addContact();
 		else if (input == "SEARCH")
 			book.searchContact();
-		else if (input == "EXIT")
+		else if (input == "EXIT" || std::cin.eof())
 			break ;
 		else
 			std::cout << "Invalid command" << std::endl;

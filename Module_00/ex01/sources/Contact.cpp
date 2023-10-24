@@ -6,29 +6,30 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:03:11 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/23 19:04:27 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/24 12:18:08 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <Contact.hpp>
 
-void	Contact::addContact(void)
+void	Contact::addContact(size_t index)
 {
 	std::string		labels[] = {"First name", "Last name", "Nickname", \
 								"Phone number", "Darkest secret"};
 	std::string*	attributes[] = {&first_name, &last_name, &nickname, \
 								&phone_number, &darkest_secret};
 	
-	for (size_t i = 0; i < 5; i++)
+	this->index = index;
+	for (size_t i = 0; i < 5; ++i)
 	{
 		std::cout << labels[i] << ": ";
 		std::getline(std::cin, *attributes[i]);
-		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
 
-std::string	format_string(std::string str)
+static std::string	format_string(std::string str)
 {
 	size_t	length = str.length();
 
@@ -40,9 +41,21 @@ std::string	format_string(std::string str)
 		return (str.substr(0, 9) + ".");
 }
 
-void	Contact::displayContact(void)
+void	Contact::displayContactShort(void)
 {
+	std::cout << std::string(9, ' ') << this->index << " | ";
 	std::cout << format_string(this->first_name) << " | ";
 	std::cout << format_string(this->last_name) << " | ";
 	std::cout << format_string(this->nickname) << std::endl;
+}
+
+void	Contact::displayContactLong(void)
+{
+	std::string		labels[] = {"First name", "Last name", "Nickname", \
+								"Phone number", "Darkest secret"};
+	std::string*	attributes[] = {&first_name, &last_name, &nickname, \
+								&phone_number, &darkest_secret};
+	
+	for (size_t i = 0; i < 5; ++i)
+		std::cout << labels[i] << ": " << *attributes[i] << std::endl;
 }
