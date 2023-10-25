@@ -5,3 +5,6 @@
 # C++ Modules
 
 These projects aim to teach object-oriented programing through C++. The standard used is C++98.
+The associated subjects are listed in the .media folder:
+* [Module_00](.media/module00_en.subject.pdf)
+* [Module_01](.media/module01_en.subject.pdf)
