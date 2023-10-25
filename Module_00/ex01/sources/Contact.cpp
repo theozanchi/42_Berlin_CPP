@@ -6,21 +6,21 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:03:11 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 11:39:49 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 12:33:11 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Contact.hpp"
 
-void	Contact::addContact(size_t index)
+void	Contact::addContact(size_t current_size)
 {
 	std::string		labels[] = {"First name", "Last name", "Nickname", \
 								"Phone number", "Darkest secret"};
 	std::string*	attributes[] = {&first_name, &last_name, &nickname, \
 								&phone_number, &darkest_secret};
 	
-	this->index = index;
+	this->index = current_size;
 	for (size_t i = 0; i < 5; ++i)
 	{
 		std::cout << labels[i] << ": ";
@@ -28,6 +28,11 @@ void	Contact::addContact(size_t index)
 			break ;
 	}
 	std::cout << std::endl;
+}
+
+void	Contact::setIndex(size_t index)
+{
+	this->index = index;
 }
 
 static std::string	format_string(std::string str)

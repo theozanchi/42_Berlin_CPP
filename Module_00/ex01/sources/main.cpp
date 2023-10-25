@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:48:55 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 11:38:35 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 12:41:42 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(void)
 		else if (input.empty())
 			continue ;
 		else if (input == "ADD")
+		
 			book.addContact();
 		else if (input == "SEARCH")
 		{

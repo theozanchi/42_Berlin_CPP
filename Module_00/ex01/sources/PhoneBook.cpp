@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:19:02 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 11:39:04 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 12:46:00 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 PhoneBook::PhoneBook(void)
 {
 	current_size = 0;
-	index = 0;
 	std::cout << "Welcome to Klingeln 3000 📞" << std::endl;
 	std::cout << "Type 'ADD', 'SEARCH' or 'EXIT' to use" << std::endl;
 }
@@ -26,10 +25,21 @@ PhoneBook::~PhoneBook()
 	std::cout << std::endl << "Closing phonebook, Tschüß! 👋" << std::endl;
 }
 
+void	PhoneBook::deleteOldestContact(void)
+{
+	for (size_t i = 0; i < 7; ++i)
+	{
+		contacts[i] = contacts[i + 1];
+		contacts[i].setIndex(i);
+	}
+	current_size--;
+}
+
 void	PhoneBook::addContact(void)
 {
-	contacts[index].addContact(index);
-	index = (index + 1) % 8;
+	if (current_size == 8)
+		deleteOldestContact();
+	contacts[current_size].addContact(current_size);
 	if (current_size < 8)
 		current_size++;
 }
@@ -49,7 +59,7 @@ void	PhoneBook::searchContact(void) const
 {
 	std::string	search_index;
 
-	if (!index)
+	if (!current_size)
 		std::cout << "🪹  Phonebook is empty" << std::endl;
 	else
 	{
