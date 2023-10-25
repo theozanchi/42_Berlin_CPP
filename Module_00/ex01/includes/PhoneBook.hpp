@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:18:41 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/24 09:57:38 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:28:10 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	~PhoneBook(void);
 
 	void	addContact(void);
-	void	searchContact(void);
+	void	searchContact(void) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:32:53 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/24 10:41:10 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:12:34 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ private:
 	
 public:
 	void	addContact(size_t index);
-	void	displayContactShort(void);
-	void	displayContactLong(void);
+	void	displayContactShort(void) const;
+	void	displayContactLong(void) const;
 };
 
 #endif

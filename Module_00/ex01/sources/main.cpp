@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:48:55 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/24 09:49:40 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:38:35 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,17 @@ int	main(void)
 	{
 		std::cout << "> ";
 		std::getline(std::cin, input);
-		if (input == "ADD")
+		if (input == "EXIT" || std::cin.eof())
+			break ;
+		else if (input.empty())
+			continue ;
+		else if (input == "ADD")
 			book.addContact();
 		else if (input == "SEARCH")
+		{
 			book.searchContact();
-		else if (input == "EXIT" || std::cin.eof())
-			break ;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
 		else
 			std::cout << "Invalid command" << std::endl;
 	}

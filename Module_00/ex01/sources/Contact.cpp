@@ -6,12 +6,12 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:03:11 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/24 12:18:08 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:39:49 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <Contact.hpp>
+#include "Contact.hpp"
 
 void	Contact::addContact(size_t index)
 {
@@ -24,7 +24,8 @@ void	Contact::addContact(size_t index)
 	for (size_t i = 0; i < 5; ++i)
 	{
 		std::cout << labels[i] << ": ";
-		std::getline(std::cin, *attributes[i]);
+		if (!std::getline(std::cin, *attributes[i]) || std::cin.eof())
+			break ;
 	}
 	std::cout << std::endl;
 }
@@ -41,7 +42,7 @@ static std::string	format_string(std::string str)
 		return (str.substr(0, 9) + ".");
 }
 
-void	Contact::displayContactShort(void)
+void	Contact::displayContactShort(void) const
 {
 	std::cout << std::string(9, ' ') << this->index << " | ";
 	std::cout << format_string(this->first_name) << " | ";
@@ -49,13 +50,14 @@ void	Contact::displayContactShort(void)
 	std::cout << format_string(this->nickname) << std::endl;
 }
 
-void	Contact::displayContactLong(void)
+void	Contact::displayContactLong(void) const
 {
-	std::string		labels[] = {"First name", "Last name", "Nickname", \
+	std::string			labels[] = {"First name", "Last name", "Nickname", \
 								"Phone number", "Darkest secret"};
-	std::string*	attributes[] = {&first_name, &last_name, &nickname, \
+	const std::string*	attributes[] = {&first_name, &last_name, &nickname, \
 								&phone_number, &darkest_secret};
 	
 	for (size_t i = 0; i < 5; ++i)
 		std::cout << labels[i] << ": " << *attributes[i] << std::endl;
+	std::cout << std::endl;
 }

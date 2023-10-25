@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:19:02 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/24 12:18:19 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:39:04 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ PhoneBook::PhoneBook(void)
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "Tschüß! 👋";
+	std::cout << std::endl << "Closing phonebook, Tschüß! 👋" << std::endl;
 }
 
 void	PhoneBook::addContact(void)
@@ -45,7 +45,7 @@ static bool	input_is_valid(std::string str, int current_size)
 	return (true);
 }
 
-void	PhoneBook::searchContact(void)
+void	PhoneBook::searchContact(void) const
 {
 	std::string	search_index;
 
