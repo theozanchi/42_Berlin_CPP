@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:03:11 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 12:33:11 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/25 13:02:26 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ void	Contact::addContact(size_t current_size)
 	this->index = current_size;
 	for (size_t i = 0; i < 5; ++i)
 	{
-		std::cout << labels[i] << ": ";
-		if (!std::getline(std::cin, *attributes[i]) || std::cin.eof())
-			break ;
+		do
+		{
+			std::cout << labels[i] << ": ";
+			if (!std::getline(std::cin, *attributes[i]) || std::cin.eof())
+				break ;
+		} while (attributes[i]->empty());
 	}
 	std::cout << std::endl;
 }
