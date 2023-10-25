@@ -34,7 +34,9 @@
 # VS code
 .vscode
 
-# Custom executables per module 
+# Custom files per module 
 ## Module_00
 megaphone
 phonebook
+19920104_091532.log
+*.log
