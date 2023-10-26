@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:20:40 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/26 12:55:28 by tzanchi          ###   ########.fr       */
+/*   Created: 2023/10/26 12:20:43 by tzanchi           #+#    #+#             */
+/*   Updated: 2023/10/26 18:01:23 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+# include <iostream>
 
-int	main( void )
+class Zombie
 {
-	Zombie	*zombie_1;
-	
-	zombie_1 = newZombie("Jean-Pierre");
-	zombie_1->announce();
-	randomChump("Didier");
-	delete zombie_1;
-}
+private:
+	std::string	name;
+
+public:
+	Zombie( std::string	name );
+	~Zombie();
+	void	announce( void );
+};
+
+#endif

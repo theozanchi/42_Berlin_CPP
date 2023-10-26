@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:20:40 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/26 12:55:28 by tzanchi          ###   ########.fr       */
+/*   Created: 2023/10/26 12:20:46 by tzanchi           #+#    #+#             */
+/*   Updated: 2023/10/26 18:04:25 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include "Zombie.hpp"
 
-int	main( void )
+Zombie::Zombie( std::string	name )
 {
-	Zombie	*zombie_1;
-	
-	zombie_1 = newZombie("Jean-Pierre");
-	zombie_1->announce();
-	randomChump("Didier");
-	delete zombie_1;
+	this->name = name;
+	std::cout << name << ": created" << std::endl;
+}
+
+Zombie::~Zombie()
+{
+	std::cout << name << ": destroyed" << std::endl;
+}
+
+void	Zombie::announce( void )
+{
+	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
