@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:54:03 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/27 18:43:51 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/10/27 19:28:43 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	HumanB::attack( void )
 		std::cout << std::endl;
 	}
 	else
-		std::cout << _name << " has no weapon" << std::endl;
+		std::cout << _name << " does not attack, no weapon" << std::endl;
 }
 
 void	HumanB::setWeapon( Weapon& weapon )
