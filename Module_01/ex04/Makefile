@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/27 19:30:18 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/27 19:31:35 by tzanchi          ###   ########.fr        #
+#    Created: 2023/10/27 11:53:01 by tzanchi           #+#    #+#              #
+#    Updated: 2023/11/22 16:52:24 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ CFLAGS		=	-Wall -Wextra -Werror -g
 NAME		=	replace
 
 # Directories
-SRCS_DIR	=	./sources/
-HEAD_DIR	=	./includes/
+SRCS_DIR	=	./
 OBJ_DIR		=	${SRCS_DIR}.o
 
 # Colours, symbols and utils
@@ -45,7 +44,7 @@ ${NAME}:		${OBJS}
 $(OBJ_DIR)/%.o:	$(SRCS_DIR)%.cpp
 				@mkdir -p $(dir $@)
 				@printf "Compiling $(notdir $<)"; \
-				${CC} ${CFLAGS} -I${HEAD_DIR} -c $< -o $@; \
+				${CC} ${CFLAGS} -c $< -o $@; \
 				printf "${GREEN}"; \
 				printf " ${TICK}\n"; \
 				printf "${NC}"; 
@@ -61,7 +60,7 @@ clean:
 
 fclean:			clean
 				@echo "Removing executable from root"
-				@rm -f a.out
+				@rm -f ${NAME}
 
 re:				fclean all
 
@@ -69,7 +68,7 @@ re:				fclean all
 project_logo:
 				@echo "${RED}   ___     _     _________     _     ____"
 				@echo "  /   \   / \   /         \   / \   /    \ "
-				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_00${RED} ) ( - ) ( ${CYAN}ex04${RED} )"
+				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_01${RED} ) ( - ) ( ${CYAN}ex04${RED} )"
 				@echo "  \___/   \_/   \_________/   \_/   \____/${NC}"
 				@echo "\n               ${NC}a 42 project by ${BOLD}Théo Zanchi${NC}\n"
 
