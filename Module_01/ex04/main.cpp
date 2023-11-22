@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 07:27:58 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/01 08:32:56 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/11/22 20:34:42 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,25 @@ std::string	new_filename( std::string filename )
 		return (filename + ".replace");
 }
 
-int	replace( std::ifstream input, char **argv )
+std::string	replace_in_string( std::string str, std::string& search, std::string& replace )
+{
+	std::string::size_type	found = str.find(search);
+
+	if (found == std::string::npos)
+		return (str);
+
+	std::string	before = str.substr(0, found);
+	std::string	after = replace_in_string(str.substr(found + search.length()), search, replace);
+
+	return (before + replace + after);
+}
+
+int	replace( std::ifstream& input_fs, char **argv )
 {
 	std::ofstream	output_fs;
+	std::string		line;
+	std::string		search = argv[2];
+	std::string		replace = argv[3];
 
 	output_fs.open(new_filename(argv[1]), std::fstream::out);
 	if (!output_fs.is_open())
@@ -32,12 +48,28 @@ int	replace( std::ifstream input, char **argv )
 		std::cout << "Error while opening the output file" << std::endl;
 		return (EXIT_FAILURE);
 	}
+	while (getline(input_fs, line))
+	{
+		output_fs << replace_in_string(line, search, replace) << std::endl;
+		if (!output_fs.good())
+		{
+			std::cout << "Error while writing the output file" << std::endl;
+			return (EXIT_FAILURE);
+		}
+	}
+	if (!input_fs.eof() && input_fs.fail())
+	{
+		std::cout << "Error while reading the input file" << std::endl;
+		return (EXIT_FAILURE);
+	}
+	output_fs.close();
+	return (EXIT_SUCCESS);
 }
 
 int	main( int argc, char **argv )
 {
 	std::ifstream	input_fs;
-	std::string		line;
+	int				exit_code;
 
 	if (argc != 4)
 	{
@@ -50,8 +82,7 @@ int	main( int argc, char **argv )
 		std::cout << "Error while opening the input file" << std::endl;
 		return (EXIT_FAILURE);
 	}
-	if (replace(input_fs, argv))
-		return (EXIT_FAILURE);
+	exit_code = replace(input_fs, argv);
 	input_fs.close();
-	return (EXIT_SUCCESS);
+	return (exit_code);
 }
