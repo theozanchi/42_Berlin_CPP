@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 20:39:05 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/22 21:06:40 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/11/24 12:15:42 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 
 	struct	FunctionMapping {
 		std::string level;
-		void (Harl::*function)(void) const;
+		size_t		level_value;
 	};
 
 public:

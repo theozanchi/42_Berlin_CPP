@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 20:38:57 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/22 21:12:03 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/11/24 12:37:18 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,56 @@ void	Harl::error( void ) const
 
 void	Harl::complain( std::string level )
 {
-	FunctionMapping mapping[] = {
-		{"DEBUG", &Harl::debug},
-		{"INFO", &Harl::info},
-		{"WARNING", &Harl::warning},
-		{"ERROR", &Harl::error}
+	FunctionMapping	mapping[] = {
+		{"DEBUG", 0},
+		{"INFO", 1},
+		{"WARNING", 2},
+		{"ERROR", 3}
 	};
+	ssize_t			level_value = -1;
 
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (mapping[i].level == level)
 		{
-			(this->*(mapping[i].function))();
-			return ;
+			level_value = mapping[i].level_value;
+			break ;
 		}
 	}
 
-	std::cout << level << " is not a valid Harl level" << std::endl;
+	switch (level_value)
+	{
+	case 0:
+	{
+		std::cout << "[ DEBUG ]" << std::endl;
+		this->debug();
+		std::cout << std::endl;
+	}
+	case 1:
+	{
+		std::cout << "[ INFO ]" << std::endl;
+		this->info();
+		std::cout << std::endl;
+	}
+	case 2:
+	{
+		std::cout << "[ WARNING ]" << std::endl;
+		this->warning();
+		std::cout << std::endl;
+	}
+	case 3:
+	{
+		std::cout << "[ ERROR ]" << std::endl;
+		this->error();
+		break ;
+	}
+	default:
+	{
+		std::cout << "[ Probably complaining about insignificant problems ]";
+		std::cout << std::endl;
+		break;
+	}
+	}
 }
 
 Harl::Harl( void )
