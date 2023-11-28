@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:22:18 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/28 19:30:33 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/11/28 19:31:55 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@
 
 Fixed::Fixed() : _rawBits( 0 ) {}
 
-Fixed::Fixed( const int n )
-{
-	if (n == INT_MAX || n == INT_MAX - 1 || n == INT_MIN)
-		_rawBits = n;
-	else
-		_rawBits = n << _fractionalBits;
-}
+Fixed::Fixed( const int n ) : _rawBits( n << _fractionalBits ) {}
 
 Fixed::Fixed( const float n ) : _rawBits( roundf(n * (1 << _fractionalBits)) ) {}
 
@@ -52,20 +46,8 @@ Fixed	Fixed::operator-( const Fixed& src ) const {
 Fixed	Fixed::operator*( const Fixed& src ) const {
 	return (Fixed( this->toFloat() * src.toFloat() ));}
 
-Fixed	Fixed::operator/( const Fixed& src ) const
-{
-	if (src._rawBits == 0)
-	{
-		if (this->_rawBits == 0)
-			return (Fixed( FIXED_NAN ));
-		else if (this->_rawBits > 0)
-			return (Fixed( FIXED_POS_INF ));
-		else
-			return (Fixed( FIXED_NEG_INF ));
-	}
-	else
-		return (Fixed( this->toFloat() / src.toFloat() ));
-}
+Fixed	Fixed::operator/( const Fixed& src ) const {
+	return (Fixed( this->toFloat() / src.toFloat() ));}
 
 /* Comparison operators */
 bool	Fixed::operator<( const Fixed& src ) const {
@@ -167,24 +149,6 @@ int	Fixed::toInt( void ) const {
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
 {
-	switch (fixed.getRawBits())
-	{
-	case Fixed::FIXED_NAN:
-		os << "NaN";
-		break ;
-	
-	case Fixed::FIXED_POS_INF:
-		os << "+Inf";
-		break ;
-
-	case Fixed::FIXED_NEG_INF:
-		os << "-Inf";
-		break ;
-
-	default:
-		os << fixed.toFloat();
-		break ;
-	}
-
+	os << fixed.toFloat();
 	return os;
 }
