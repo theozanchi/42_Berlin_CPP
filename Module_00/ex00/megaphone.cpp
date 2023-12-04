@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:03:27 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/04 22:15:27 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 22:39:28 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		{
 			std::string	str = argv[i];
 			for (std::string::iterator it = str.begin(); it != str.end(); it++)
-				std::cout << toupper(*it);
+				std::cout << static_cast<char>(toupper(*it));
 		}
 		std::cout << std::endl;
 	}
