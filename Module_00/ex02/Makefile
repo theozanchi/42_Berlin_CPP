@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/25 14:58:35 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/25 17:39:43 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/04 22:17:23 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-g
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	global_banksters
 
 # Directories

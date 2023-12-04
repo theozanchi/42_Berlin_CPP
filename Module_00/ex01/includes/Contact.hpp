@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:32:53 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 12:31:54 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 21:32:49 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 class Contact
 {
 private:
-	size_t		index;
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
+	size_t		_index;
+	std::string	_first_name;
+	std::string	_last_name;
+	std::string	_nickname;
+	std::string	_phone_number;
+	std::string	_darkest_secret;
 	
 public:
 	void	addContact(size_t index);

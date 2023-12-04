@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:08:49 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 17:48:54 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 22:32:14 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,11 @@ int	Account::getNbWithdrawals(void)
 
 void	Account::displayAccountsInfos(void)
 {
-	for (int i = 0; i < _nbAccounts; ++i)
-	{
-		_displayTimestamp();
-		std::cout << " accounts:" << getNbAccounts() << ";";
-		std::cout << "amount:" << getTotalAmount() << ";";
-		std::cout << "deposits:" << getNbDeposits() << ";";
-		std::cout << "withdrawals:" << getNbWithdrawals() << std::endl;
-	}
+	_displayTimestamp();
+	std::cout << " accounts:" << getNbAccounts() << ";";
+	std::cout << "total:" << getTotalAmount() << ";";
+	std::cout << "deposits:" << getNbDeposits() << ";";
+	std::cout << "withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
 // ************************************************************************** //
@@ -79,12 +76,12 @@ void	Account::makeDeposit( int deposit )
 {
 	_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex << ";";
-	std::cout << " p_amount:" << this->checkAmount() << ";";
+	std::cout << "p_amount:" << this->checkAmount() << ";";
 	this->_amount += deposit;
 	this->_nbDeposits++;
 	_totalAmount += deposit;
 	_totalNbDeposits++;
-	std::cout << " deposit:" << deposit << ";";
+	std::cout << "deposit:" << deposit << ";";
 	std::cout << "amount:" << this->checkAmount() << ";";
 	std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
 }
@@ -93,8 +90,8 @@ bool	Account::makeWithdrawal( int withdrawal )
 {
 	_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex << ";";
-	std::cout << " p_amount:" << this->checkAmount() << ";";
-	std::cout << " withdrawal:";
+	std::cout << "p_amount:" << this->checkAmount() << ";";
+	std::cout << "withdrawal:";
 	if (this->checkAmount() >= withdrawal)
 	{
 		this->_amount -= withdrawal;

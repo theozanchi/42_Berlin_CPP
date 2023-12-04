@@ -6,21 +6,22 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:03:11 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/25 13:02:26 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 21:48:42 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include "Contact.hpp"
 
 void	Contact::addContact(size_t current_size)
 {
 	std::string		labels[] = {"First name", "Last name", "Nickname", \
 								"Phone number", "Darkest secret"};
-	std::string*	attributes[] = {&first_name, &last_name, &nickname, \
-								&phone_number, &darkest_secret};
+	std::string*	attributes[] = {&_first_name, &_last_name, &_nickname, \
+								&_phone_number, &_darkest_secret};
 	
-	this->index = current_size;
+	this->_index = current_size;
 	for (size_t i = 0; i < 5; ++i)
 	{
 		do
@@ -33,37 +34,34 @@ void	Contact::addContact(size_t current_size)
 	std::cout << std::endl;
 }
 
-void	Contact::setIndex(size_t index)
-{
-	this->index = index;
-}
+void	Contact::setIndex(size_t index) { _index = index; }
 
-static std::string	format_string(std::string str)
+void	truncateAndDisplay( const std::string& str, size_t width )
 {
-	size_t	length = str.length();
-
-	if (length == 10)
-		return (str);
-	else if (length < 10)
-		return (std::string(10 - length, ' ') + str);
+	if (str.length() > width)
+		std::cout << std::setw(width) << str.substr(0, width - 1) + ".";
 	else
-		return (str.substr(0, 9) + ".");
-}
+		std::cout << std::setw(width) << str;
+	}
 
 void	Contact::displayContactShort(void) const
 {
-	std::cout << std::string(9, ' ') << this->index << " | ";
-	std::cout << format_string(this->first_name) << " | ";
-	std::cout << format_string(this->last_name) << " | ";
-	std::cout << format_string(this->nickname) << std::endl;
+	std::cout << std::setw(10) << _index;
+	std::cout << " | ";
+	truncateAndDisplay(_first_name, 10);
+	std::cout << " | ";
+	truncateAndDisplay(_last_name, 10);
+	std::cout << " | ";
+	truncateAndDisplay(_nickname, 10);
+	std::cout << std::endl;
 }
 
 void	Contact::displayContactLong(void) const
 {
 	std::string			labels[] = {"First name", "Last name", "Nickname", \
 								"Phone number", "Darkest secret"};
-	const std::string*	attributes[] = {&first_name, &last_name, &nickname, \
-								&phone_number, &darkest_secret};
+	const std::string*	attributes[] = {&_first_name, &_last_name, &_nickname, \
+								&_phone_number, &_darkest_secret};
 	
 	for (size_t i = 0; i < 5; ++i)
 		std::cout << labels[i] << ": " << *attributes[i] << std::endl;

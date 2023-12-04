@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 15:15:55 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/23 18:00:24 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/04 22:16:20 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	phonebook
 
 # Directories
@@ -63,7 +63,7 @@ clean:
 
 fclean:			clean
 				@echo "Removing executable from root"
-				@rm -f a.out
+				@rm -f ${NAME}
 
 re:				fclean all
 

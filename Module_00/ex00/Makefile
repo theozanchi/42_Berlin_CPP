@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 12:00:53 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/20 13:07:54 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/04 22:15:49 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	megaphone
 
 # Directories
@@ -60,7 +60,7 @@ clean:
 
 fclean:			clean
 				@echo "Removing executable from root"
-				@rm -f a.out
+				@rm -f ${NAME}
 
 re:				fclean all
 
