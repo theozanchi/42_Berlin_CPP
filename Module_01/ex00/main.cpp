@@ -6,11 +6,14 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:20:40 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/26 12:55:28 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 20:45:44 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include "Zombie.hpp"
+
+Zombie*	newZombie( std::string name );
+void	randomChump( std::string name );
 
 int	main( void )
 {
