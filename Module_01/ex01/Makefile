@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 12:19:24 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/26 17:11:10 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/04 20:50:44 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-g
+CFLAGS		=	-Wall -Wextra -Werror -g
 NAME		=	zombies
 
 # Directories
