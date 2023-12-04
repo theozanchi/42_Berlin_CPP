@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 18:09:55 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/26 18:11:28 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/04 20:57:00 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-g
+CFLAGS		=	-Wall -Wextra -Werror -g
 NAME		=	brain
 
 # Directories
