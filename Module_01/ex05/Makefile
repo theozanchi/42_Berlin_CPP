@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 20:38:16 by tzanchi           #+#    #+#              #
-#    Updated: 2023/11/22 20:40:35 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/05 13:03:07 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	harl
 
 # Directories
@@ -64,7 +64,6 @@ fclean:			clean
 				@rm -f ${NAME}
 
 re:				fclean all
-
 
 project_logo:
 				@echo "${RED}   ___     _     _________     _     ____"
