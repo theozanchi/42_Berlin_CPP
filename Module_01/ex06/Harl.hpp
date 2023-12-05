@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 20:39:05 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/24 12:15:42 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:42:02 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ private:
 public:
 	Harl( void );
 	~Harl();
-	void	complain( std::string level );
+	void	showLevels( std::string level );
 };

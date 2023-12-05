@@ -6,12 +6,13 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 20:38:40 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/24 12:38:09 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:42:18 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
+#include <cstdlib>
 
 int	main( int argc, char **argv )
 {
@@ -23,6 +24,6 @@ int	main( int argc, char **argv )
 		return (EXIT_FAILURE);
 	}
 
-	Harl0.complain(argv[1]);
+	Harl0.showLevels(argv[1]);
 	return (EXIT_SUCCESS);
 }

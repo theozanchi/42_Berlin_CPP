@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 20:38:57 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/24 12:37:18 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:42:12 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	Harl::error( void ) const
 
 /* public ******************************************************************** */
 
-void	Harl::complain( std::string level )
+void	Harl::showLevels( std::string level )
 {
 	FunctionMapping	mapping[] = {
 		{"DEBUG", 0},
@@ -51,7 +51,7 @@ void	Harl::complain( std::string level )
 		{"WARNING", 2},
 		{"ERROR", 3}
 	};
-	ssize_t			level_value = -1;
+	std::ptrdiff_t	level_value = -1;
 
 	for (size_t i = 0; i < 4; i++)
 	{
