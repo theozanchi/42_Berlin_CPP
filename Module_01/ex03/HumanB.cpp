@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:54:03 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/27 19:28:43 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 21:01:29 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 
 /* ************************************************************************** */
 
-HumanB::HumanB( std::string name ) : _name(name), _weapon(nullptr)
-{
-}
+HumanB::HumanB( std::string name ) : _name(name), _weapon(nullptr) {}
 
-HumanB::~HumanB( void )
-{
-}
+HumanB::~HumanB( void ) {}
 
 /* ************************************************************************** */
 

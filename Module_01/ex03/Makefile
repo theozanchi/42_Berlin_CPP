@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 11:53:01 by tzanchi           #+#    #+#              #
-#    Updated: 2023/10/27 18:44:58 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/05 12:17:51 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	violence
 
 # Directories

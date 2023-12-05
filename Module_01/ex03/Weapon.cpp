@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:53:45 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/10/27 15:11:05 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/04 21:00:37 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,14 @@
 
 /* ************************************************************************** */
 
-Weapon::Weapon( std::string type )
-{
-	_type = type;
-}
+Weapon::Weapon( std::string type ) : _type( type ) {}
 
-Weapon::~Weapon( void )
-{
-}
+Weapon::Weapon ( void ) {}
+
+Weapon::~Weapon( void ) {}
 
 /* ************************************************************************** */
 
-const std::string&	Weapon::getType( void ) const
-{
-	return (_type);
-}
+const std::string&	Weapon::getType( void ) const { return (_type); }
 
-void	Weapon::setType( std::string type )
-{
-	_type = type;
-}
+void	Weapon::setType( std::string type ) { _type = type; }
