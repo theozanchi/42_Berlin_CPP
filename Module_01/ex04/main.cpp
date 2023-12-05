@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 07:27:58 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/22 20:34:42 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 12:55:21 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ std::string	replace_in_string( std::string str, std::string& search, std::string
 int	replace( std::ifstream& input_fs, char **argv )
 {
 	std::ofstream	output_fs;
+	std::string		filename = argv[1];
 	std::string		line;
 	std::string		search = argv[2];
 	std::string		replace = argv[3];
 
-	output_fs.open(new_filename(argv[1]), std::fstream::out);
+	output_fs.open(new_filename(filename).c_str(), std::fstream::out);
 	if (!output_fs.is_open())
 	{
 		std::cout << "Error while opening the output file" << std::endl;
