@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:22:18 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/24 20:47:35 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:26:01 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,14 @@ Fixed::Fixed( const float n ) : _rawBits( roundf(n * (1 << _fractionalBits)) )
 Fixed::Fixed( const Fixed& src )
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	_rawBits = src.getRawBits();
 }
 
 Fixed& Fixed::operator=( const Fixed& src )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-	{
-		this->_rawBits = src._rawBits;
-	}
+		this->_rawBits = src.getRawBits();
 	return (*this);
 }
 
@@ -66,32 +64,18 @@ Fixed::~Fixed()
 
 /* ************************************************************************** */
 
-int	Fixed::getRawBits( void ) const
-{
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_rawBits);
-}
+int	Fixed::getRawBits( void ) const { return (_rawBits); }
 
-void	Fixed::setRawBits( int const raw )
-{
-	this->_rawBits = raw;
-}
+void	Fixed::setRawBits( int const raw ) { _rawBits = raw; }
 
-float	Fixed::toFloat( void ) const
-{
-	return ((float)_rawBits / (1 << _fractionalBits));
-}
+float	Fixed::toFloat( void ) const { return ((float)_rawBits / (1 << _fractionalBits)); }
 
-int	Fixed::toInt( void ) const
-{
-	return (_rawBits >> _fractionalBits);
-}
+int	Fixed::toInt( void ) const { return (_rawBits >> _fractionalBits); }
 
 /* ************************************************************************** */
 
-std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
+std::ostream& operator<<(std::ostream & os, const Fixed& fixed)
 {
-	float	value = fixed.toFloat();
-	os << value;
+	os << fixed.toFloat();
 	return os;
 }
