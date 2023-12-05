@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:22:18 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/28 19:31:55 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:39:43 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ Fixed::Fixed( const Fixed& src ) : _rawBits( src._rawBits ) {}
 
 Fixed::~Fixed() {}
 
-
 /* Operators overload ******************************************************** */
 /* Assignment operator */
 Fixed&	Fixed::operator=( const Fixed& src )
 {
 	if (this != &src)
-		this->_rawBits = src._rawBits;
+		_rawBits = src.getRawBits();
 	return (*this);
 }
 
@@ -51,33 +50,33 @@ Fixed	Fixed::operator/( const Fixed& src ) const {
 
 /* Comparison operators */
 bool	Fixed::operator<( const Fixed& src ) const {
-	return (this->_rawBits < src._rawBits);}
+	return (this->getRawBits() < src.getRawBits());}
 
 bool	Fixed::operator>( const Fixed& src ) const {
-	return (this->_rawBits > src._rawBits);}
+	return (this->getRawBits() > src.getRawBits());}
 
 bool	Fixed::operator<=( const Fixed& src ) const {
-	return (this->_rawBits <= src._rawBits);}
+	return (this->getRawBits() <= src.getRawBits());}
 
 bool	Fixed::operator>=( const Fixed& src ) const {
-	return (this->_rawBits >= src._rawBits);}
+	return (this->getRawBits() >= src.getRawBits());}
 
 bool	Fixed::operator==( const Fixed& src ) const {
-	return (this->_rawBits == src._rawBits);}
+	return (this->getRawBits() == src.getRawBits());}
 
 bool	Fixed::operator!=( const Fixed& src ) const {
-	return (this->_rawBits != src._rawBits);}
+	return (this->getRawBits() != src.getRawBits());}
 
 /* Increment operators */
 Fixed&	Fixed::operator--()
 {
-	this->_rawBits--;
+	_rawBits--;
 	return (*this);
 }
 
 Fixed&	Fixed::operator++()
 {
-	this->_rawBits++;
+	_rawBits++;
 	return (*this);
 }
 
@@ -85,7 +84,7 @@ Fixed	Fixed::operator--(int)
 {
 	Fixed	temp = *this;
 
-	this->_rawBits--;
+	_rawBits--;
 	return ( temp );
 }
 
@@ -93,10 +92,9 @@ Fixed	Fixed::operator++(int)
 {
 	Fixed	temp = *this;
 
-	this->_rawBits++;
+	_rawBits++;
 	return ( temp );
 }
-
 
 /* Min and max *************************************************************** */
 Fixed&	Fixed::min( Fixed& a, Fixed& b)
@@ -131,7 +129,6 @@ const Fixed&	Fixed::max( const Fixed& a, const Fixed& b)
 		return (b);
 }
 
-
 /* Member functions ********************************************************** */
 
 int	Fixed::getRawBits( void ) const { return (_rawBits); }
@@ -144,8 +141,7 @@ float	Fixed::toFloat( void ) const {
 int	Fixed::toInt( void ) const {
 	return (_rawBits >> _fractionalBits);}
 
-
-/* Friend function *********************************************************** */
+/* Display operator overload ************************************************* */
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
 {

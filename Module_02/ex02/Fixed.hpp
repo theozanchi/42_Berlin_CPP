@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:22:16 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/28 19:31:03 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:34:52 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ public:
 	void	setRawBits( int const raw );
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
-
-	friend std::ostream&	operator<<( std::ostream& os, const Fixed& fixed );
 };
+
+std::ostream&	operator<<( std::ostream& os, const Fixed& fixed );
+
