@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/07 18:11:58 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:40:37 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap( void ) : _name( "no_name" ), _hit_points(10), _energy_points(10), _attack_damage(0) {
-	std::cout << "Default constructor called for " << _name << std::endl;
+ClapTrap::ClapTrap( void ) : _name( "no_name" ), _hit_points(100), _energy_points(50), _attack_damage(20) {
+	std::cout << "ClapTrap default constructor called for " << _name << std::endl;
 }
 
-ClapTrap::ClapTrap( std::string name ) : _name( name ), _hit_points(10), _energy_points(10), _attack_damage(0) {
-	std::cout << "Constructor called for " << _name << std::endl;
+ClapTrap::ClapTrap( std::string name ) : _name( name ), _hit_points(100), _energy_points(50), _attack_damage(20) {
+	std::cout << "ClapTrap constructor called for " << _name << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap& src ) {
@@ -28,11 +28,11 @@ ClapTrap::ClapTrap( const ClapTrap& src ) {
 	_hit_points = src.getHitPoints();
 	_energy_points = src.getEnergyPoints();
 	_attack_damage = src.getAttackDamage();
-	std::cout << "Copy constructor called for " << _name << std::endl;
+	std::cout << "ClapTrap copy constructor called for " << _name << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Default destructor called for " << _name << std::endl;
+	std::cout << "ClapTrap default destructor called for " << _name << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=( const ClapTrap& src ) {
@@ -49,17 +49,10 @@ ClapTrap& ClapTrap::operator=( const ClapTrap& src ) {
 
 /* ************************************************************************** */
 
-std::string		ClapTrap::getName( void ) const { return _name; }
-void			ClapTrap::setName( std::string name ) { _name = name; }
-
-unsigned int	ClapTrap::getHitPoints( void ) const { return _hit_points; }
-void			ClapTrap::setHitPoints( unsigned int hit_points ) { _hit_points = hit_points; }
-
-unsigned int	ClapTrap::getEnergyPoints( void ) const { return _energy_points; }
-void			ClapTrap::setEnergyPoints( unsigned int energy_points ) { _energy_points = energy_points; }
-
-unsigned int	ClapTrap::getAttackDamage( void ) const { return _attack_damage; }
-void			ClapTrap::setAttackDamage( unsigned int attack_damage ) { _attack_damage = attack_damage; }
+std::string		ClapTrap::getName( void ) const { return _name; };
+unsigned int	ClapTrap::getHitPoints( void ) const { return _hit_points; };
+unsigned int	ClapTrap::getEnergyPoints( void ) const { return _energy_points; };
+unsigned int	ClapTrap::getAttackDamage( void ) const { return _attack_damage; };
 
 /* ************************************************************************** */
 
