@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/07 18:11:58 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:23:09 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,9 @@ ClapTrap& ClapTrap::operator=( const ClapTrap& src ) {
 /* ************************************************************************** */
 
 std::string		ClapTrap::getName( void ) const { return _name; }
-void			ClapTrap::setName( std::string name ) { _name = name; }
-
 unsigned int	ClapTrap::getHitPoints( void ) const { return _hit_points; }
-void			ClapTrap::setHitPoints( unsigned int hit_points ) { _hit_points = hit_points; }
-
 unsigned int	ClapTrap::getEnergyPoints( void ) const { return _energy_points; }
-void			ClapTrap::setEnergyPoints( unsigned int energy_points ) { _energy_points = energy_points; }
-
 unsigned int	ClapTrap::getAttackDamage( void ) const { return _attack_damage; }
-void			ClapTrap::setAttackDamage( unsigned int attack_damage ) { _attack_damage = attack_damage; }
 
 /* ************************************************************************** */
 
