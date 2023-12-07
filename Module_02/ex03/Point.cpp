@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:34:37 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/28 19:53:19 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/06 09:57:35 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Point&	Point::operator=(const Point& src)
 	if (this != &src)
 	{
 		( Fixed )_x = src.getX();
-		( Fixed ) _y = src.getY();
+		( Fixed )_y = src.getY();
 	}
 	return (*this);
 }

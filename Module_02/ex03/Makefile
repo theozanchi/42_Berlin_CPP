@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 19:34:29 by tzanchi           #+#    #+#              #
-#    Updated: 2023/11/28 19:36:11 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/05 18:02:43 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	bsp
 
 # Directories

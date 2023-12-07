@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:34:39 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/11/28 21:24:47 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:39:25 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
  */
 bool	same_sign(Fixed m, Fixed n)
 {
-	return ((m > 0 && n > 0) || (m < 0 && n < 0) || (m == 0 && n == 0));
+	return ((m > 0 && n > 0) || (m < 0 && n < 0));
 }
-
+#include <cmath>
 /**
  * @brief Calculates coefficients A, B and C of the line between a and b of equation
  * A * x + B * y + C = 0. Checks if points m and n are on the same side of the line
@@ -34,8 +34,16 @@ bool	same_half_plan(Point const a, Point const b, Point const m, Point const n)
 	Fixed	B = a.getX() - b.getX();
 	Fixed	C = Fixed(-1) * (A * a.getX() + B * a.getY());
 
-	return (same_sign(A * m.getX() + B * m.getY() + C,
-						A * n.getX() + B * n.getY() + C));
+	Fixed value1 = A * m.getX() + B * m.getY() + C;
+	Fixed value2 = A * n.getX() + B * n.getY() + C;
+
+	bool	sign1 = same_sign(value1, Fixed( 1 ));
+	bool	sign2 = same_sign(value2, Fixed( 1 ));
+	
+	if ((sign1 && sign2) || (!sign1 && !sign2))
+		return (true);
+	else
+		return (false);
 }
 
 /**
