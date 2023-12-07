@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 15:12:30 by tzanchi           #+#    #+#              #
-#    Updated: 2023/12/07 18:43:25 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/07 19:03:28 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
 NAME		=	scavtrap
 
 # Directories
-SRCS_DIR	=	./
+SRCS_DIR	=	./src/
+INCS_DIR	=	./inc/
 OBJ_DIR		=	${SRCS_DIR}.o
 
 # Colours, symbols and utils
@@ -46,7 +47,7 @@ ${NAME}:		${OBJS}
 $(OBJ_DIR)/%.o:	$(SRCS_DIR)%.cpp
 				@mkdir -p $(dir $@)
 				@printf "Compiling $(notdir $<)"; \
-				${CC} ${CFLAGS} -c $< -o $@; \
+				${CC} ${CFLAGS} -I${INCS_DIR} -c $< -o $@; \
 				printf "${GREEN}"; \
 				printf " ${TICK}\n"; \
 				printf "${NC}"; 
