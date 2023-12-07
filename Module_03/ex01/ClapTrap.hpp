@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:12 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/07 10:27:43 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:24:56 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hit_points;
 	unsigned int	_energy_points;

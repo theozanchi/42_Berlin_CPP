@@ -6,14 +6,14 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 15:12:30 by tzanchi           #+#    #+#              #
-#    Updated: 2023/12/07 15:13:25 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/07 18:43:25 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
-NAME		=	claptrap
+NAME		=	scavtrap
 
 # Directories
 SRCS_DIR	=	./
@@ -29,6 +29,7 @@ BOLD		=	\033[1m
 TICK		=	✓
 
 SRC			=	ClapTrap.cpp \
+				ScavTrap.cpp \
 				main.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})

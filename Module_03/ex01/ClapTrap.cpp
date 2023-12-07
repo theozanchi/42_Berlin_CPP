@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/07 17:40:37 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:45:11 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap( void ) : _name( "no_name" ), _hit_points(100), _energy_points(50), _attack_damage(20) {
-	std::cout << "ClapTrap default constructor called for " << _name << std::endl;
+ClapTrap::ClapTrap( void ) : _name( "no_name" ), _hit_points(10), _energy_points(10), _attack_damage(0) {
+	std::cout << "Claptrap default constructor called for " << _name << std::endl;
 }
 
-ClapTrap::ClapTrap( std::string name ) : _name( name ), _hit_points(100), _energy_points(50), _attack_damage(20) {
+ClapTrap::ClapTrap( std::string name ) : _name( name ), _hit_points(10), _energy_points(10), _attack_damage(0) {
 	std::cout << "ClapTrap constructor called for " << _name << std::endl;
 }
 
@@ -49,10 +49,10 @@ ClapTrap& ClapTrap::operator=( const ClapTrap& src ) {
 
 /* ************************************************************************** */
 
-std::string		ClapTrap::getName( void ) const { return _name; };
-unsigned int	ClapTrap::getHitPoints( void ) const { return _hit_points; };
-unsigned int	ClapTrap::getEnergyPoints( void ) const { return _energy_points; };
-unsigned int	ClapTrap::getAttackDamage( void ) const { return _attack_damage; };
+std::string		ClapTrap::getName( void ) const { return _name; }
+unsigned int	ClapTrap::getHitPoints( void ) const { return _hit_points; }
+unsigned int	ClapTrap::getEnergyPoints( void ) const { return _energy_points; }
+unsigned int	ClapTrap::getAttackDamage( void ) const { return _attack_damage; }
 
 /* ************************************************************************** */
 
