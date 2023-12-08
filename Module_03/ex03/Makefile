@@ -6,13 +6,13 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 15:12:30 by tzanchi           #+#    #+#              #
-#    Updated: 2023/12/07 19:22:18 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/08 10:08:40 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
+CFLAGS		=	-Wall -Wextra -Werror -Wshadow -Wno-shadow -g -std=c++98
 NAME		=	diamondtrap
 
 # Directories

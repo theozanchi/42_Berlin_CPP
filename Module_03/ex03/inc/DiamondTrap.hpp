@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 19:21:39 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/07 20:24:06 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/08 09:50:46 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	DiamondTrap( void );
 	DiamondTrap( std::string name );
 	DiamondTrap( const DiamondTrap& src );
-	// DiamondTrap& operator=( const DiamondTrap& src );
+	DiamondTrap& operator=( const DiamondTrap& src );
 	~DiamondTrap();
 
 	using	ScavTrap::attack;

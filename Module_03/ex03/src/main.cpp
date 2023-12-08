@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:10 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/07 21:25:47 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/08 10:10:37 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main( void )
 	albert.takeDamage(alphonse.getAttackDamage());
 	somebody.beRepaired(10);
 	somebody = DiamondTrap("Didier");
-	std::cout << somebody.getName() << " has " << somebody.getHitPoints() << " hit points" << std::endl;
+	std::cout << somebody.getName() << " has " << somebody.getHitPoints() << " hit points" << std::endl << std::endl;
 
 	std::cout << std::endl;
 	for (size_t i = 0; i < 10; i++)
@@ -34,6 +34,14 @@ int	main( void )
 		alphonse.attack("Albert");
 		if (alphonse.getEnergyPoints() + 1)
 			albert.takeDamage(alphonse.getAttackDamage());
+		std::cout << std::endl;
 	}
 	somebody.highFiveGuys();
+	std::cout << std::endl;
+
+	somebody.guardGate();
+	std::cout << std::endl;
+
+	albert.whoAmI();
+	std::cout << std::endl;
 }
