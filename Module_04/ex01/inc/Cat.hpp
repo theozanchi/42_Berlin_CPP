@@ -6,15 +6,19 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:33:12 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/08 12:39:10 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/08 15:42:48 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
+private:
+	Brain*	_brain;
+
 public:
 	void	makeSound( void ) const;
 

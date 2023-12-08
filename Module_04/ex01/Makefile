@@ -6,14 +6,14 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2023/12/08 13:46:42 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/08 16:12:14 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
-NAME		=	polymorphism
+NAME		=	world_on_fire
 
 # Directories
 SRCS_DIR	=	./src/
@@ -35,7 +35,8 @@ SRC			=	Animal.cpp \
 				main.cpp \
 				WrongAnimal.cpp \
 				WrongDog.cpp \
-				WrongCat.cpp
+				WrongCat.cpp \
+				Brain.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})
 SRC_NR		=	$(words ${SRCS})
@@ -75,7 +76,7 @@ re:				fclean all
 project_logo:
 				@echo "${RED}   ___     _     _________     _     ____"
 				@echo "  /   \   / \   /         \   / \   /    \ "
-				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_04${RED} ) ( - ) ( ${CYAN}ex00${RED} )"
+				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_04${RED} ) ( - ) ( ${CYAN}ex01${RED} )"
 				@echo "  \___/   \_/   \_________/   \_/   \____/${NC}"
 				@echo "\n               ${NC}a 42 project by ${BOLD}Théo Zanchi${NC}\n"
 
