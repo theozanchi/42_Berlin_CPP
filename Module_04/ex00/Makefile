@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/07 15:12:30 by tzanchi           #+#    #+#              #
-#    Updated: 2023/12/08 10:19:14 by tzanchi          ###   ########.fr        #
+#    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
+#    Updated: 2023/12/08 13:46:42 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -Wshadow -Wno-shadow -g -std=c++98
-NAME		=	diamondtrap
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
+NAME		=	polymorphism
 
 # Directories
 SRCS_DIR	=	./src/
@@ -29,11 +29,13 @@ NC			=	\033[0m
 BOLD		=	\033[1m
 TICK		=	✓
 
-SRC			=	ClapTrap.cpp \
-				DiamondTrap.cpp \
-				FragTrap.cpp \
+SRC			=	Animal.cpp \
+				Dog.cpp \
+				Cat.cpp \
 				main.cpp \
-				ScavTrap.cpp
+				WrongAnimal.cpp \
+				WrongDog.cpp \
+				WrongCat.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})
 SRC_NR		=	$(words ${SRCS})
@@ -73,7 +75,7 @@ re:				fclean all
 project_logo:
 				@echo "${RED}   ___     _     _________     _     ____"
 				@echo "  /   \   / \   /         \   / \   /    \ "
-				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_03${RED} ) ( - ) ( ${CYAN}ex03${RED} )"
+				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_04${RED} ) ( - ) ( ${CYAN}ex00${RED} )"
 				@echo "  \___/   \_/   \_________/   \_/   \____/${NC}"
 				@echo "\n               ${NC}a 42 project by ${BOLD}Théo Zanchi${NC}\n"
 
