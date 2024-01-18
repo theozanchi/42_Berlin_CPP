@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2023/12/09 17:32:26 by tzanchi          ###   ########.fr        #
+#    Updated: 2023/12/10 19:34:06 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ TICK		=	✓
 
 SRC			=	Bureaucrat.cpp \
 				Form.cpp \
+				Exceptions.cpp \
 				main.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})

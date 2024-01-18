@@ -6,17 +6,12 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:11 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/10 11:49:30 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:02:45 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-/* Exceptions *************************************************************** */
-
-const char*	GradeTooHighException::what( void ) const throw() { return "Error: grade too high"; }
-
-const char*	GradeTooLowException::what( void ) const throw() { return "Error: grade too low"; }
+#include "Form.hpp"
 
 /* Constructors and destructor ********************************************** */
 
@@ -55,7 +50,7 @@ Bureaucrat& Bureaucrat::operator=( const Bureaucrat& src ) {
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << _name << " destroyed" << std::endl;
+	std::cout << "Bureaucrat " << _name << " destroyed" << std::endl;
 }
 
 /* Accessors **************************************************************** */
@@ -85,12 +80,14 @@ void	Bureaucrat::downgrade( void ) {
 }
 
 void	Bureaucrat::signForm( Form& form ) {
+	std::cerr << "Bureaucrat " << _name;
 	try {
 		form.beSigned(*this);
+		std::cerr << " has signed form " << form.getName() << std::endl;
 	}
 	catch (const std::exception& e) {
-		std::cerr << _name << " couldn't sign form " << form.getName();
-		std::cerr << " because of following error: " << e.what() << std::endl;
+		std::cerr << " couldn't sign form " << form.getName();
+		std::cerr << " because of following " << e.what() << std::endl;
 	}
 }
 

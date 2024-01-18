@@ -6,23 +6,17 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:12 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/10 11:46:51 by tzanchi          ###   ########.fr       */
+/*   Updated: 2023/12/10 19:26:23 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <string>
-#include <iostream>
-#include "Form.hpp"
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
+# include <string>
+# include <iostream>
+# include "Exceptions.hpp"
 
-class GradeTooHighException : public std::exception {
-public:
-	const char* what() const throw();
-};
-
-class GradeTooLowException : public std::exception {
-	const char* what() const throw();
-};
+class Form;
 
 class Bureaucrat
 {
@@ -49,3 +43,5 @@ public:
 };
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& src);
+
+#endif

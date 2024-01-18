@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:33:10 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/10 11:34:04 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:00:28 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FORM_HPP
 # include <string>
 # include <iostream>
-# include "Bureaucrat.hpp"
+# include "Exceptions.hpp"
+
+class Bureaucrat;
 
 class Form {
 private:
@@ -26,6 +28,7 @@ private:
 public:
 	Form();
 	Form( const std::string& name );
+	Form( const std::string& name, const int signGrade, const int executeGrade );
 	Form( const Form& src );
 	Form& operator=( const Form& src );
 	~Form();

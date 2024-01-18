@@ -6,18 +6,17 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/09 17:16:18 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:06:22 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int	main( void ) {
-	Bureaucrat*	workforce[5];
-	for (size_t i = 0; i < 5; i++) {
-		workforce[i] = NULL;
-	}
+	Bureaucrat*	workforce[3] = {NULL, NULL, NULL};
+	Form*		forms[3] = {NULL, NULL, NULL};
 
 	std::cout << "\033[1:32mInitialisation\033[0m" << std::endl;
 	try {
@@ -41,54 +40,61 @@ int	main( void ) {
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
+
 	try {
-		std::cout << "Trying Isabelle, grade -1: ";
-		workforce[3] = new Bureaucrat("Isabelle", -1);
-	}
-	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
-	}
-	try {
-		std::cout << "Trying Camille, grade 160: ";
-		workforce[4] = new Bureaucrat("Camille", 160);
+		std::cout << std::endl << "\033[1:32mInitialising forms\033[0m" << std::endl;
+		forms[0] = new Form("0A", 50, 50);
+		forms[1] = new Form("1A", 100, 100);
+		forms[2] = new Form();
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << std::endl << "\033[1:32mGrade changes\033[0m" << std::endl;
+	std::cout << std::endl << "\033[1:32mForms recap\033[0m" << std::endl;
+	for (size_t i = 0; i < 3; i++) {
+		if (forms[i])
+			std::cout << *forms[i] << std::endl;
+	}
+
+	std::cout << std::endl << "\033[1:32mWork on Forms\033[0m" << std::endl;
 	try {
-		std::cout << "Trying to upgrade " << *workforce[0] << ": ";
-		workforce[0]->upgrade();
+		workforce[1]->signForm(*forms[0]);
 	}
-	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
-	}
-	try {
-		std::cout << "Trying to downgrade " << *workforce[1] << ": ";
-		workforce[1]->downgrade();
-	}
-	catch(const std::exception& e) {
-		std::cerr <<  e.what() << '\n';
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
 	try {
-		std::cout << "Trying to upgrade " << *workforce[2] << ": ";
-		workforce[2]->upgrade();
+		workforce[0]->signForm(*forms[0]);
 	}
-	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		workforce[0]->signForm(*forms[0]);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		workforce[0]->signForm(*forms[2]);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
 	
-	std::cout << std::endl << std::endl << "\033[1:32mRecap\033[0m" << std::endl;
-	for (size_t i = 0; i < 5; i++) {
-		if (workforce[i])
-			std::cout << *workforce[i] << std::endl;
+	std::cout << std::endl << "\033[1:32mForms recap\033[0m" << std::endl;
+	for (size_t i = 0; i < 3; i++) {
+		if (forms[i])
+			std::cout << *forms[i] << std::endl;
 	}
 	
-	std::cout << std::endl << std::endl << "\033[1:32mCleanup\033[0m" << std::endl;
-	for (size_t i = 0; i < 5; i++) {
+	std::cout << std::endl << "\033[1:32mCleanup\033[0m" << std::endl;
+	for (size_t i = 0; i < 3; i++) {
 		if (workforce[i])
 			delete workforce[i];
+		if (forms[i])
+			delete forms[i];
 	}
 	
 }
