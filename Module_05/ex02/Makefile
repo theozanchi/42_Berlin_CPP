@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/01/18 18:15:55 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/01/18 18:30:22 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ clean:
 					echo "Removing all .o files"; \
 					rm -r ${OBJ_DIR}; \
 				fi
-				@rm *_shrubbery
+				@rm -f *_shrubbery
 
 fclean:			clean
 				@echo "Removing executable from root"
