@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/01/18 18:30:22 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/01/19 14:29:45 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC			=	AForm.cpp \
 				Bureaucrat.cpp \
 				Exceptions.cpp \
 				main.cpp \
+				RobotomyRequestForm.cpp \
 				ShrubberyCreationForm.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})

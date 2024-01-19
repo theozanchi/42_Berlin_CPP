@@ -6,17 +6,19 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/18 18:12:13 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:50:21 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 #include <iostream>
 
 int	main( void ) {
 	Bureaucrat*	workforce[3] = {NULL, NULL, NULL};
-	AForm*		forms[3] = {NULL, NULL, NULL};
+	AForm*		forms[4] = {NULL, NULL, NULL, NULL};
 
 	std::cout << "\033[1:32mInitialisation\033[0m" << std::endl;
 	try {
@@ -44,8 +46,9 @@ int	main( void ) {
 	try {
 		std::cout << std::endl << "\033[1:32mInitialising forms\033[0m" << std::endl;
 		forms[0] = new ShrubberyCreationForm("referat_1");
-		// forms[1] = new Form("1A", 100, 100);
-		// forms[2] = new Form();
+		forms[1] = new RobotomyRequestForm("robot_42");
+		forms[2] = new RobotomyRequestForm("robot_21");
+		// forms[3] = new
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
@@ -64,18 +67,18 @@ int	main( void ) {
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
-	// try {
-	// 	workforce[0]->signForm(*forms[0]);
-	// }
-	// catch (const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
-	// try {
-	// 	workforce[0]->signForm(*forms[0]);
-	// }
-	// catch (const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
+	try {
+		workforce[2]->signForm(*forms[1]);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		workforce[2]->signForm(*forms[2]);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	// try {
 	// 	workforce[0]->signForm(*forms[2]);
 	// }

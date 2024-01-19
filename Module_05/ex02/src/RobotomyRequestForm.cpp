@@ -1,53 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:28:04 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/19 14:35:14 by tzanchi          ###   ########.fr       */
+/*   Created: 2024/01/19 14:27:44 by tzanchi           #+#    #+#             */
+/*   Updated: 2024/01/19 14:55:35 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
-#include <fstream>
 
-int	ShrubberyCreationForm::_counter = 0;
+#include <cstdlib>
+
+int	RobotomyRequestForm::_counter = 0;
 
 /* Constructors, assignment operator and destructor ************************* */
 
-ShrubberyCreationForm::ShrubberyCreationForm( const std::string& target ) :
-	AForm(	"shrubbery_creation_form_" + std::to_string(_counter++),
-			145,
-			137,
+RobotomyRequestForm::RobotomyRequestForm( const std::string& target ) :
+	AForm(	"robotomy_request_form_" + std::to_string(_counter++),
+			72,
+			45,
 			target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm& src ) : AForm( src ) {}
+RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm& src ) : AForm( src ) {}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=( const ShrubberyCreationForm& src ) {
+RobotomyRequestForm& RobotomyRequestForm::operator=( const RobotomyRequestForm& src ) {
 	if (this != &src) {
 		AForm::operator=(src);
 	}
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
 /* Member functions ********************************************************* */
 
-void	ShrubberyCreationForm::beSigned( const Bureaucrat& bureaucrat ) {
+void	RobotomyRequestForm::beSigned( const Bureaucrat& bureaucrat ) {
 	if (bureaucrat.getGrade() <= getSignGrade()) {
 		if (!getSigned()) {
-			std::ofstream	ofs;
-			ofs.open(getTarget() + "_shrubbery", std::ofstream::out);
-			ofs << "   *" << std::endl;
-			ofs << "  ***" << std::endl;
-			ofs << " *****" << std::endl;
-			ofs << "*******" << std::endl;
-			ofs << "   |" << std::endl;
-			ofs.close();
+			std::cout << "***Drilling noises***" << std::endl;
+			srand(time(NULL));
+			int	n = rand() % 100;
+			std::cout << "Robotomy performed by form " << getName();
+			if (n >= 50)
+				std::cout << " was successful" << std::endl;
+			else
+				std::cout << " failed" << std::endl;
 
 			setSigned(true);
 		}
