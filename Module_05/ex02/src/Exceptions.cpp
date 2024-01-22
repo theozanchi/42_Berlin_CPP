@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 18:42:00 by tzanchi           #+#    #+#             */
-/*   Updated: 2023/12/10 18:48:58 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 09:47:19 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,8 @@ const char*	GradeTooLowException::what( void ) const throw() {
 
 const char*	FormSignedException::what( void ) const throw() {
 	return "error: Form already signed";
+}
+
+const char*	FormNotSignedException::what( void ) const throw() {
+	return "error: Form not signed";
 }

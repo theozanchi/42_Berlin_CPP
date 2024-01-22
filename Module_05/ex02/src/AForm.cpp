@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:33:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/18 18:00:02 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:12:56 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,28 @@ const int&	AForm::getExecuteGrade( void ) const { return _executeGrade; }
 
 const std::string&	AForm::getTarget( void ) const { return _target; }
 
-void	AForm::setSigned( bool signedStatus ) { _signed = signedStatus; }
+/* Member functions ********************************************************* */
+
+void	AForm::beSigned( const Bureaucrat& bureaucrat ) {
+	if (bureaucrat.getGrade() <= _signGrade) {
+		if (!_signed)
+			_signed = true;
+		else
+			throw (FormSignedException());
+	}
+	else
+		throw (GradeTooLowException());
+}
+
+bool	AForm::isExecutable( const Bureaucrat& bureaucrat ) const {
+	if (!getSigned()) {
+		throw (FormNotSignedException());
+	}
+	if (bureaucrat.getGrade() >= getExecuteGrade()) {
+		throw (GradeTooLowException());
+	}
+	return (true);
+}
 
 /* Redirection operator overload ******************************************** */
 

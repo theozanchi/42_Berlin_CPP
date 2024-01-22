@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:27:44 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/19 14:55:35 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:15:33 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,13 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 /* Member functions ********************************************************* */
 
-void	RobotomyRequestForm::beSigned( const Bureaucrat& bureaucrat ) {
-	if (bureaucrat.getGrade() <= getSignGrade()) {
-		if (!getSigned()) {
-			std::cout << "***Drilling noises***" << std::endl;
-			srand(time(NULL));
-			int	n = rand() % 100;
-			std::cout << "Robotomy performed by form " << getName();
-			if (n >= 50)
-				std::cout << " was successful" << std::endl;
-			else
-				std::cout << " failed" << std::endl;
-
-			setSigned(true);
-		}
+void	RobotomyRequestForm::execute( const Bureaucrat& executor ) const {
+	if (isExecutable(executor)) {
+		std::cout << "***Drilling noises***" << std::endl;
+		std::cout << "Robotomy performed by form " << getName();
+		if (_counter % 2 == 0)
+			std::cout << " was successful" << std::endl;
 		else
-			throw (FormSignedException());
+			std::cout << " failed" << std::endl;
 	}
-	else
-		throw (GradeTooLowException());
 }

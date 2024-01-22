@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:12 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/18 18:10:26 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:19:22 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ public:
 	void	upgrade( void );
 	void	downgrade( void );
 
-	void	signForm( AForm& form );
+	void	signForm( AForm& form ) const;
+	void	executeForm( const AForm& form ) const;
 };
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& src);

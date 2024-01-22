@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:33:10 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/18 17:59:41 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:13:25 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ public:
 	const int&			getExecuteGrade( void ) const;
 	const std::string&	getTarget( void ) const;
 
-	void	setSigned( bool signedStatus );
-
-	virtual void	beSigned( const Bureaucrat& bureaucrat ) = 0;
+	void	beSigned( const Bureaucrat& bureaucrat );
+	bool	isExecutable( const Bureaucrat& bureaucrat ) const;
+	
+	virtual void	execute( const Bureaucrat& executor ) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& src);

@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:28:04 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/19 14:35:14 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:16:01 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,15 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 /* Member functions ********************************************************* */
 
-void	ShrubberyCreationForm::beSigned( const Bureaucrat& bureaucrat ) {
-	if (bureaucrat.getGrade() <= getSignGrade()) {
-		if (!getSigned()) {
-			std::ofstream	ofs;
-			ofs.open(getTarget() + "_shrubbery", std::ofstream::out);
-			ofs << "   *" << std::endl;
-			ofs << "  ***" << std::endl;
-			ofs << " *****" << std::endl;
-			ofs << "*******" << std::endl;
-			ofs << "   |" << std::endl;
-			ofs.close();
-
-			setSigned(true);
-		}
-		else
-			throw (FormSignedException());
+void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const {
+	if (isExecutable(executor)) {
+		std::ofstream	ofs;
+		ofs.open(getTarget() + "_shrubbery", std::ofstream::out);
+		ofs << "   *" << std::endl;
+		ofs << "  ***" << std::endl;
+		ofs << " *****" << std::endl;
+		ofs << "*******" << std::endl;
+		ofs << "   |" << std::endl;
+		ofs.close();
 	}
-	else
-		throw (GradeTooLowException());
 }

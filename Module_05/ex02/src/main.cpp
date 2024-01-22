@@ -6,13 +6,14 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/19 14:50:21 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:23:57 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 #include <iostream>
 
@@ -48,7 +49,7 @@ int	main( void ) {
 		forms[0] = new ShrubberyCreationForm("referat_1");
 		forms[1] = new RobotomyRequestForm("robot_42");
 		forms[2] = new RobotomyRequestForm("robot_21");
-		// forms[3] = new
+		forms[3] = new PresidentialPardonForm("Hugues");
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
@@ -60,7 +61,7 @@ int	main( void ) {
 			std::cout << *forms[i] << std::endl;
 	}
 
-	std::cout << std::endl << "\033[1:32mWork on Forms\033[0m" << std::endl;
+	std::cout << std::endl << "\033[1:32mSigning forms\033[0m" << std::endl;
 	try {
 		workforce[0]->signForm(*forms[0]);
 	}
@@ -79,12 +80,12 @@ int	main( void ) {
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
-	// try {
-	// 	workforce[0]->signForm(*forms[2]);
-	// }
-	// catch (const std::exception& e) {
-	// 	std::cerr << e.what() << std::endl;
-	// }
+	try {
+		workforce[3]->signForm(*forms[2]);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	
 	std::cout << std::endl << "\033[1:32mForms recap\033[0m" << std::endl;
 	for (size_t i = 0; i < 3; i++) {
