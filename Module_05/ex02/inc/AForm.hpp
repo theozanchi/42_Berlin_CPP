@@ -6,15 +6,18 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:33:10 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/22 10:13:25 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:27:50 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
 # define AFORM_HPP
+
 # include <string>
 # include <iostream>
+
 # include "Exceptions.hpp"
+# include "_utils.hpp"
 
 class Bureaucrat;
 

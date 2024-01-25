@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/22 10:23:57 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:51:08 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,28 +75,52 @@ int	main( void ) {
 		std::cerr << e.what() << std::endl;
 	}
 	try {
-		workforce[2]->signForm(*forms[2]);
+		workforce[2]->signForm(*forms[1]);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 	try {
-		workforce[3]->signForm(*forms[2]);
+		workforce[0]->signForm(*forms[3]);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 	
-	std::cout << std::endl << "\033[1:32mForms recap\033[0m" << std::endl;
-	for (size_t i = 0; i < 3; i++) {
-		if (forms[i])
-			std::cout << *forms[i] << std::endl;
+	std::cout << std::endl << "\033[1:32mUsing forms\033[0m" << std::endl;
+	for (size_t i = 0; i < 4; i++) {
+		try {
+			workforce[0]->executeForm(*forms[0]);
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			workforce[1]->executeForm(*forms[0]);
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			workforce[0]->executeForm(*forms[1]);
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			workforce[0]->executeForm(*forms[2]);
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	
 	std::cout << std::endl << "\033[1:32mCleanup\033[0m" << std::endl;
 	for (size_t i = 0; i < 3; i++) {
 		if (workforce[i])
 			delete workforce[i];
+	}
+	for (size_t i = 0; i < 4; i++) {
 		if (forms[i])
 			delete forms[i];
 	}

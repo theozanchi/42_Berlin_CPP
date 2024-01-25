@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 09:52:25 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/22 10:14:55 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:28:09 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	PresidentialPardonForm::_counter = 0;
 /* Constructors, assignment operator and destructor ************************* */
 
 PresidentialPardonForm::PresidentialPardonForm( const std::string& target ) :
-	AForm(	"presidential_pardon_form_" + std::to_string(_counter++),
+	AForm(	"presidential_pardon_form_" + to_string(_counter++),
 			25,
 			5,
 			target) {}

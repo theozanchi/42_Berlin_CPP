@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/01/19 14:29:45 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/01/25 12:35:17 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,12 @@ NC			=	\033[0m
 BOLD		=	\033[1m
 TICK		=	✓
 
-SRC			=	AForm.cpp \
+SRC			=	_utils.cpp \
+				AForm.cpp \
 				Bureaucrat.cpp \
 				Exceptions.cpp \
 				main.cpp \
+				PresidentialPardonForm.cpp \
 				RobotomyRequestForm.cpp \
 				ShrubberyCreationForm.cpp
 
