@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:33:08 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/18 14:05:06 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/26 11:53:42 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,19 @@ Form::Form(
 	const int executeGrade
 ) :	_name( name ),
 	_signGrade( signGrade ),
-	_executeGrade( executeGrade )
-{}
+	_executeGrade( executeGrade ) {
+	if (signGrade < 1 || executeGrade < 1)
+		throw (GradeTooHighException());
+	else if (signGrade > 150 || executeGrade > 150)
+		throw (GradeTooLowException());
+}
 
 Form::Form(
 	const Form& src
 ) :	_name( src._name ),
 	_signed( src._signed ),
 	_signGrade( src._signGrade ),
-	_executeGrade( src._executeGrade )
-{}
+	_executeGrade( src._executeGrade ) {}
 
 Form& Form::operator=( const Form& src ) {
 	if (this != &src)

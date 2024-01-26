@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:33:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/22 10:12:56 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/26 11:55:47 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ AForm::AForm(
 	_signed( 0 ),
 	_signGrade( signGrade ),
 	_executeGrade( execGrade ),
-	_target( target )
-{}
+	_target( target ) {
+	if (_signGrade < 1 || _executeGrade < 1)
+		throw (GradeTooHighException());
+	else if (_signGrade > 150 || _executeGrade > 150)
+		throw (GradeTooLowException());
+	}
 
 AForm::AForm(
 	const AForm& src

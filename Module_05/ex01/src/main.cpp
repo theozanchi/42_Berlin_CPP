@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/18 14:06:22 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/26 11:58:24 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	main( void ) {
 	Bureaucrat*	workforce[3] = {NULL, NULL, NULL};
-	Form*		forms[3] = {NULL, NULL, NULL};
+	Form*		forms[4] = {NULL, NULL, NULL, NULL};
 
 	std::cout << "\033[1:32mInitialisation\033[0m" << std::endl;
 	try {
@@ -46,6 +46,7 @@ int	main( void ) {
 		forms[0] = new Form("0A", 50, 50);
 		forms[1] = new Form("1A", 100, 100);
 		forms[2] = new Form();
+		forms[3] = new Form("test", 200, 100);
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
@@ -93,6 +94,8 @@ int	main( void ) {
 	for (size_t i = 0; i < 3; i++) {
 		if (workforce[i])
 			delete workforce[i];
+	}
+	for (size_t i = 0; i < 4; i++) {
 		if (forms[i])
 			delete forms[i];
 	}
