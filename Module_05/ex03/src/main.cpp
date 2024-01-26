@@ -6,11 +6,12 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:12:07 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/25 12:51:08 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/01/26 11:36:13 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -19,25 +20,23 @@
 
 int	main( void ) {
 	Bureaucrat*	workforce[3] = {NULL, NULL, NULL};
+	Intern		someIntern;
 	AForm*		forms[4] = {NULL, NULL, NULL, NULL};
 
 	std::cout << "\033[1:32mInitialisation\033[0m" << std::endl;
 	try {
-		std::cout << "Trying Michel, grade 1: ";
 		workforce[0] = new Bureaucrat("Michel", 1);
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 	try {
-		std::cout << "Trying Gilbert, grade 150: ";
 		workforce[1] = new Bureaucrat("Gilbert", 150);
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 	try {
-		std::cout << "Trying Monique, grade 42: ";
 		workforce[2] = new Bureaucrat("Monique", 42);
 	}
 	catch(const std::exception& e) {
@@ -46,10 +45,10 @@ int	main( void ) {
 
 	try {
 		std::cout << std::endl << "\033[1:32mInitialising forms\033[0m" << std::endl;
-		forms[0] = new ShrubberyCreationForm("referat_1");
-		forms[1] = new RobotomyRequestForm("robot_42");
-		forms[2] = new RobotomyRequestForm("robot_21");
-		forms[3] = new PresidentialPardonForm("Hugues");
+		forms[0] = someIntern.makeForm("presidential_pardon", "target");
+		forms[1] = someIntern.makeForm("robotomy_request", "target");
+		forms[2] = someIntern.makeForm("shrubbery_creation", "target");
+		forms[3] = someIntern.makeForm("other", "target");
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
@@ -76,12 +75,6 @@ int	main( void ) {
 	}
 	try {
 		workforce[2]->signForm(*forms[1]);
-	}
-	catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-	try {
-		workforce[0]->signForm(*forms[3]);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;

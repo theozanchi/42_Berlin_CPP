@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/01/25 12:54:33 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/01/26 11:36:24 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC			=	_utils.cpp \
 				AForm.cpp \
 				Bureaucrat.cpp \
 				Exceptions.cpp \
+				Intern.cpp \
 				main.cpp \
 				PresidentialPardonForm.cpp \
 				RobotomyRequestForm.cpp \
