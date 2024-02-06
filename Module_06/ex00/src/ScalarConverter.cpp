@@ -6,24 +6,11 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/05 10:35:57 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:29:31 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-/* Maps ********************************************************************* */
-
-// std::map <std::string, variableType> ScalarConverter::specialTypesMap;
-
-ScalarConverter::ScalarConverter() {
-	// specialTypesMap.insert(std::make_pair("-inff", MIN_INFF));
-	// specialTypesMap.insert(std::make_pair("+inff", PLU_INFF));
-	// specialTypesMap.insert(std::make_pair("nanf", NANF));
-	// specialTypesMap.insert(std::make_pair("-inf", MIN_INF));
-	// specialTypesMap.insert(std::make_pair("+inf", PLU_INF));
-	// specialTypesMap.insert(std::make_pair("nan", NAND));
-}
 
 /* Converters *************************************************************** */
 
@@ -33,7 +20,7 @@ char ScalarConverter::toChar( const std::string& str ) {
 
 int ScalarConverter::toInt( const std::string& str ) {
 	try {
-		return (atoi(str.c_str()));
+		return (std::atoi(str.c_str()));
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -50,7 +37,7 @@ float ScalarConverter::toFloat( const std::string& str ) {
 		else if (str == "nanf")
 			return (NAN);
 		else
-			return (atof(str.c_str()));
+			return (std::atof(str.c_str()));
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -67,7 +54,7 @@ double ScalarConverter::toDouble( const std::string& str) {
 		else if (str == "nan")
 			return (NAN);
 		else
-			return (strtod(str.c_str(), NULL));
+			return (std::strtod(str.c_str(), NULL));
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -127,7 +114,7 @@ bool isANumber( const std::string& str ) {
 	for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
 		if ((*it == '+' || *it == '-') && it != str.begin())
 			return (false);
-		if (!isdigit(*it)) {
+		else if (!isdigit(*it)) {
 			if (*it == '.') {
 				if (++dot_counter > 1)
 					return (false);
@@ -142,19 +129,22 @@ bool isANumber( const std::string& str ) {
 }
 
 variableType ScalarConverter::specialStringType( const std::string& str ) {
-	std::map <std::string, variableType> specialTypesMap;
-	specialTypesMap.insert(std::make_pair("-inff", MIN_INFF));
-	specialTypesMap.insert(std::make_pair("+inff", PLU_INFF));
-	specialTypesMap.insert(std::make_pair("nanf", NANF));
-	specialTypesMap.insert(std::make_pair("-inf", MIN_INF));
-	specialTypesMap.insert(std::make_pair("+inf", PLU_INF));
-	specialTypesMap.insert(std::make_pair("nan", NAND));
-	
-	std::map <std::string, variableType>::const_iterator it = specialTypesMap.find(str);
-	if (it != specialTypesMap.end())
-		return (it->second);
-	else
-		return (ERROR);
+	typedef std::pair<const char*, variableType> PairType;
+	const PairType specialTypes[] = {
+		PairType("-inff", MIN_INFF),
+		PairType("+inff", PLU_INFF),
+		PairType("nanf", NANF),
+		PairType("-inf", MIN_INF),
+		PairType("+inf", PLU_INF),
+		PairType("nan", NAND)
+	};
+	const int numSpecialTypes = sizeof(specialTypes) / sizeof(specialTypes[0]);
+
+	for (int i = 0; i < numSpecialTypes; ++i) {
+		if (str == specialTypes[i].first)
+		return (specialTypes[i].second);
+	}
+	return (ERROR);
 }
 
 variableType	ScalarConverter::identifyType( const std::string& str ) {
@@ -202,7 +192,8 @@ void	ScalarConverter::display( int i ) {
 
 void	ScalarConverter::display( float f ) {
 	std::cout << "float: " << f;
-	if (std::abs(f - static_cast<int>(f)) > 0.0f)
+	if (std::abs(f - static_cast<int>(f)) > 0.0f
+		|| (f == INFINITY || f == -INFINITY || f == NAN))
 		std::cout << "f" << std::endl;
 	else
 		std::cout << ".0f" << std::endl;
@@ -210,7 +201,8 @@ void	ScalarConverter::display( float f ) {
 
 void	ScalarConverter::display( double d ) {
 	std::cout << "double: " << d;
-	if (std::abs(d - static_cast<int>(d)) > 0.0)
+	if (std::abs(d - static_cast<int>(d)) > 0.0
+		|| (d == INFINITY || d == -INFINITY || d == NAN))
 		std::cout << std::endl;
 	else
 		std::cout << ".0" << std::endl;

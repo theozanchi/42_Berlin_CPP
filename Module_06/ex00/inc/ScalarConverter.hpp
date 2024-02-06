@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:10:02 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/01/31 09:40:54 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:56:04 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <cmath>
 # include <cstdlib>
 # include <iomanip>
+# include <stdexcept>
 
 enum variableType {
 	CHAR,
@@ -38,10 +39,8 @@ enum variableType {
 
 class ScalarConverter {
 private:
-	ScalarConverter(); //constructor is private so class is not instanciable
+	ScalarConverter() {} //constructor is private so class is not instanciable
 	
-	// static std::map <std::string, variableType> specialTypesMap;
-
 	static variableType specialStringType( const std::string& str );
 	static variableType	identifyType( const std::string& str);
 	
