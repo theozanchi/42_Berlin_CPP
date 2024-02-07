@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/07 17:27:25 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/07 17:37:58 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ScalarConverter::convert( const std::string& str ) {
 
 bool isAlphaString( const std::string& str ) {
 	for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-		if (!isalpha(*it))
+		if (!isalpha(*it) || *it != '-' || *it != '+')
 			return (false);
 	}
 	return (true);
