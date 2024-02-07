@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/07 11:32:00 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/07 17:06:11 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ bool isANumber( const std::string& str ) {
 	size_t	dot_counter = 0;
 	
 	for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-		if ((*it == '+' || *it == '-') && it != str.begin())
-			return (false);
+		if ((*it == '+' || *it == '-') && it == str.begin())
+			continue;
 		else if (!isdigit(*it)) {
 			if (*it == '.') {
 				if (++dot_counter > 1)
