@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/05 15:29:31 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/07 11:32:00 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ variableType	ScalarConverter::identifyType( const std::string& str ) {
 		else {
 			try {
 				double n = strtod(str.c_str(), NULL);
-				if (n >= std::numeric_limits<int>::min() && n <= std::numeric_limits<int>::max())
+				if (n >= -std::numeric_limits<int>::max() && n <= std::numeric_limits<int>::max())
 					return (INT);
 				else
 					return (DOUBLE);
@@ -210,19 +210,19 @@ void	ScalarConverter::display( double d ) {
 
 void	ScalarConverter::displayAll( double n ) {
 	{
-		if (n < std::numeric_limits<char>::min() || n > std::numeric_limits<char>::max())
+		if (n < -std::numeric_limits<char>::max() || n > std::numeric_limits<char>::max())
 			std::cout << "char: impossible" << std::endl;
 		else
 			display(static_cast<char>(n));
 	}
 	{
-		if (n < std::numeric_limits<int>::min() || n > std::numeric_limits<int>::max())
+		if (n < -std::numeric_limits<int>::max() || n > std::numeric_limits<int>::max())
 			std::cout << "int: impossible" << std::endl;
 		else
 			display(static_cast<int>(n));
 	}
 	{
-		if (n < std::numeric_limits<float>::min() || n > std::numeric_limits<float>::max())
+		if (n < -std::numeric_limits<float>::max() || n > std::numeric_limits<float>::max())
 			std::cout << "float: impossible" << std::endl;
 		else
 			display(static_cast<float>(n));
