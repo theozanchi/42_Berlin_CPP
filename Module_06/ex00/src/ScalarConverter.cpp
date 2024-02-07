@@ -6,11 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/02/07 17:37:58 by tzanchi          ###   ########.fr       */
-=======
-/*   Updated: 2024/02/07 17:42:44 by tzanchi          ###   ########.fr       */
->>>>>>> f7a1156e291e09b0536d664daa52a73ecd6310ab
+/*   Updated: 2024/02/07 17:51:10 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +32,7 @@ float ScalarConverter::toFloat( const std::string& str ) {
 	try {
 		if (str == "-inff")
 			return (-INFINITY);
-		else if (str == "+inff")
+		else if (str == "+inff" || str == "inff")
 			return (INFINITY);
 		else if (str == "nanf")
 			return (NAN);
@@ -53,7 +49,7 @@ double ScalarConverter::toDouble( const std::string& str) {
 	try {
 		if (str == "-inf")
 			return (-INFINITY);
-		else if (str == "+inf")
+		else if (str == "+inf" || str == "inf")
 			return (INFINITY);
 		else if (str == "nan")
 			return (NAN);
@@ -139,9 +135,11 @@ variableType ScalarConverter::specialStringType( const std::string& str ) {
 	const PairType specialTypes[] = {
 		PairType("-inff", MIN_INFF),
 		PairType("+inff", PLU_INFF),
+		PairType("inff", PLU_INFF),
 		PairType("nanf", NANF),
 		PairType("-inf", MIN_INF),
 		PairType("+inf", PLU_INF),
+		PairType("inf", PLU_INF),
 		PairType("nan", NAND)
 	};
 	const int numSpecialTypes = sizeof(specialTypes) / sizeof(specialTypes[0]);
@@ -228,7 +226,7 @@ void	ScalarConverter::displayAll( double n ) {
 			display(static_cast<int>(n));
 	}
 	{
-		if (n < -std::numeric_limits<float>::max() || n > std::numeric_limits<float>::max())
+		if (!std::isinf(n) && (n < -std::numeric_limits<float>::max() || n > std::numeric_limits<float>::max()))
 			std::cout << "float: impossible" << std::endl;
 		else
 			display(static_cast<float>(n));
