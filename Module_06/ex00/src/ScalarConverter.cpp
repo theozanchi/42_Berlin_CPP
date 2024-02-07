@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/07 17:06:11 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/07 17:27:25 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void	ScalarConverter::display( int i ) {
 void	ScalarConverter::display( float f ) {
 	std::cout << "float: " << f;
 	if (std::abs(f - static_cast<int>(f)) > 0.0f
-		|| (f == INFINITY || f == -INFINITY || f == NAN))
+		|| (std::isinf(f) || std::isnan(f)))
 		std::cout << "f" << std::endl;
 	else
 		std::cout << ".0f" << std::endl;
@@ -202,7 +202,7 @@ void	ScalarConverter::display( float f ) {
 void	ScalarConverter::display( double d ) {
 	std::cout << "double: " << d;
 	if (std::abs(d - static_cast<int>(d)) > 0.0
-		|| (d == INFINITY || d == -INFINITY || d == NAN))
+		|| (std::isinf(d) || std::isnan(d)))
 		std::cout << std::endl;
 	else
 		std::cout << ".0" << std::endl;
@@ -210,13 +210,13 @@ void	ScalarConverter::display( double d ) {
 
 void	ScalarConverter::displayAll( double n ) {
 	{
-		if (n < -std::numeric_limits<char>::max() || n > std::numeric_limits<char>::max())
+		if (n < std::numeric_limits<char>::min() || n > std::numeric_limits<char>::max())
 			std::cout << "char: impossible" << std::endl;
 		else
 			display(static_cast<char>(n));
 	}
 	{
-		if (n < -std::numeric_limits<int>::max() || n > std::numeric_limits<int>::max())
+		if (n < std::numeric_limits<int>::min() || n > std::numeric_limits<int>::max())
 			std::cout << "int: impossible" << std::endl;
 		else
 			display(static_cast<int>(n));
