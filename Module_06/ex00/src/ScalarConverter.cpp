@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:09:59 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/07 17:51:10 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/07 18:12:16 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ variableType ScalarConverter::specialStringType( const std::string& str ) {
 }
 
 variableType	ScalarConverter::identifyType( const std::string& str ) {
-	if (str.length() == 1 && str.at(0) >= 0 && str.at(0) <= 127)
+	if (str.length() == 1 && str.at(0) >= 0 && str.at(0) <= 127 && !isdigit(str.at(0)))
 		return (CHAR);
 	else if (isAlphaString(str))
 		return (specialStringType(str));
@@ -214,13 +214,13 @@ void	ScalarConverter::display( double d ) {
 
 void	ScalarConverter::displayAll( double n ) {
 	{
-		if (n < std::numeric_limits<char>::min() || n > std::numeric_limits<char>::max())
+		if (std::isnan(n) || std::isinf(n) || n < std::numeric_limits<char>::min() || n > std::numeric_limits<char>::max())
 			std::cout << "char: impossible" << std::endl;
 		else
 			display(static_cast<char>(n));
 	}
 	{
-		if (n < std::numeric_limits<int>::min() || n > std::numeric_limits<int>::max())
+		if (std::isnan(n) || std::isinf(n) || n < std::numeric_limits<int>::min() || n > std::numeric_limits<int>::max())
 			std::cout << "int: impossible" << std::endl;
 		else
 			display(static_cast<int>(n));

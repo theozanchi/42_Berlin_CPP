@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 08:30:56 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/06 09:17:58 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/07 18:21:17 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	identify( Base* p ) {
 		std::cout << "Pointer of type B" << std::endl;
 	else if (dynamic_cast<C*>(p))
 		std::cout << "Pointer of type C" << std::endl;
+	else
+		std::cout << "Error, type impossible to identify" << std::endl;
 }
 
 void	identify( Base& p ) {
