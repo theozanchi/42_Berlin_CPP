@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/07 18:30:10 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/09 15:53:14 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	templates
 # Directories
 SRCS_DIR	=	./src/
 INCS_DIR	=	./inc/
-OBJ_DIR		=	${SRCS_DIR}.o
+OBJ_DIR		=	./obj/
 
 # Colours, symbols and utils
 GREEN		=	\033[1;32m
