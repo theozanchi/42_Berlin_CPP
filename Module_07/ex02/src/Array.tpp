@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:58:56 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/08 19:29:53 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:44:55 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,15 @@ T& Array<T>::operator[]( const unsigned int i ) { i > _size ? throw(OutofBoundEx
 template<typename T>
 const char    *Array<T>::OutOfBoundException::what(void) const throw() {
     return ("Index out of array bound");
+}
+
+/* Output operator overload ************************************************* */
+
+template <class T>
+std::ostream&	operator<<( std::ostream& os, const Array<T>& arr ) {
+	os << "{ ";
+	for (unsigned int i = 0; i < arr._size - 1; ++i) {
+		os << arr.[i] << " , ";
+	}
+	os << arr[arr._size - 1] << " }" << std::endl;
 }

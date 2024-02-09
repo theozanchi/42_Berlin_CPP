@@ -6,12 +6,15 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:57:44 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/08 19:30:20 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:40:35 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
+
+# include <exception>
+# include <iostream>
 
 template <class T>
 class Array {
@@ -20,8 +23,8 @@ private:
 	T*				_array;
 
 	class OutOfBoundException: public std::exception {
-    public:
-        const char *what () const throw();
+	public:
+		const char *what () const throw();
     };
 
 public:
@@ -35,5 +38,8 @@ public:
 
 	unsigned int	size( void ) const;
 };
+
+template <class T>
+std::ostream&	operator<<( std::ostream& os, const Array<T>& arr );
 
 #endif
