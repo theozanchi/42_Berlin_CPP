@@ -6,13 +6,15 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/07 18:57:13 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/09 15:15:16 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g -Og -std=c++98 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g -std=c++98
+CFLAGS		+=	-fsanitize=address
+CFLAGS		+=	-Isrc
 NAME		=	array
 
 # Directories

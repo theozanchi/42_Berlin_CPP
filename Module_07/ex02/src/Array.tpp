@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:58:56 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/09 12:44:55 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:48:01 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,40 @@ unsigned int	Array<T>::size( void ) const { return (_size); }
 /* Array accessor opeartor overload ***************************************** */
 
 template <class T>
-T& Array<T>::operator[]( const unsigned int i ) { i > _size ? throw(OutofBoundException); : return (_array[i]);}
+T& Array<T>::operator[]( const unsigned int i ) {
+	if (i >= this->size())
+		throw OutOfBoundException();
+	else
+		return (_array[i]);
+}
+
+template <class T>
+const T& Array<T>::operator[]( const unsigned int i ) const {
+	if (i >= this->size())
+		throw OutOfBoundException();
+	else
+		return (_array[i]);
+}
 
 /* Exception **************************************************************** */
 
 template<typename T>
 const char    *Array<T>::OutOfBoundException::what(void) const throw() {
-    return ("Index out of array bound");
+    return ("error: index out of bound");
 }
 
 /* Output operator overload ************************************************* */
 
 template <class T>
 std::ostream&	operator<<( std::ostream& os, const Array<T>& arr ) {
-	os << "{ ";
-	for (unsigned int i = 0; i < arr._size - 1; ++i) {
-		os << arr.[i] << " , ";
+	if (!arr.size())
+		os << "{ }";
+	else {
+		os << "{ ";
+		for (unsigned int i = 0; i < arr.size() - 1; ++i) {
+			os << arr[i] << " , ";
+		}
+		os << arr[arr.size() - 1] << " }";
 	}
-	os << arr[arr._size - 1] << " }" << std::endl;
+	return (os);
 }

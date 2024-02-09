@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:57:44 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/09 12:40:35 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:33:00 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 	class OutOfBoundException: public std::exception {
 	public:
 		const char *what () const throw();
-    };
+	};
 
 public:
 	Array();
@@ -34,12 +34,15 @@ public:
 	Array& operator=( const Array& src );
 	~Array();
 	
-	T&	operator[]( const unsigned int i );
+	T&			operator[]( const unsigned int i );
+	const T&	operator[]( const unsigned int i ) const ;
 
 	unsigned int	size( void ) const;
 };
 
 template <class T>
 std::ostream&	operator<<( std::ostream& os, const Array<T>& arr );
+
+#include "Array.tpp"
 
 #endif
