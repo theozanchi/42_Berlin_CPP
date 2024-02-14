@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:18:32 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/14 10:54:46 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:11:41 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ public:
 	Span( const Span& src );
 	Span& operator=( const Span& src );
 	~Span();
+
+	int				at( size_t i ) const;
 
 	void			addNumber( int n );
 	void			fillSpan( void );

@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:18:52 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/14 11:02:46 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:32:04 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 int	main( void ) {
 	{
-		std::cout << "\033[1;32mTest 1\033[0m: span of size 4, filled manually" << std::endl;
+		std::cout << "\033[1;32mTest 1\033[0m: eval sheet test" << std::endl;
+		Span sp = Span(5);
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	{
+		std::cout << std::endl << "\033[1;32mTest 1\033[0m: span of size 4, filled manually" << std::endl;
 		Span	span = Span(4);
 		try {
 			span.addNumber(42);
@@ -40,6 +51,46 @@ int	main( void ) {
 		std::cout << std::endl << "\033[1;32mTest 3\033[0m: span of size 10000, filled randomly" << std::endl;
 		Span	span = Span(10000);
 		span.fillSpan();
+		std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << span.longestSpan() << std::endl;
+	}
+	{
+		std::cout << std::endl << "\033[1;32mTest 3\033[0m: span of size 1000000, filled randomly" << std::endl;
+		Span	span = Span(1000000);
+		span.fillSpan();
+		std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << span.longestSpan() << std::endl;
+	}
+	{
+		std::cout << std::endl << "\033[1;32mTest 4\033[0m: span too short" << std::endl;
+		Span	span = Span(2);
+		span.addNumber(1);
+		try {
+			std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			std::cout << "Longest span: " << span.longestSpan() << std::endl;
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		std::cout << std::endl << "\033[1;32mTest 5\033[0m: span of size 2" << std::endl;
+		Span	span = Span(2);
+		span.addNumber(1);
+		span.addNumber(-1);
+		std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << span.longestSpan() << std::endl;
+	}
+	{
+		std::cout << std::endl << "\033[1;32mTest 6\033[0m: span of size 2, same numbers" << std::endl;
+		Span	span = Span(2);
+		span.addNumber(42);
+		span.addNumber(42);
 		std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
 		std::cout << "Longest span: " << span.longestSpan() << std::endl;
 	}

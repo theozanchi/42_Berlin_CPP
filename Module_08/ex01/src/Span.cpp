@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:18:41 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/14 10:58:31 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:27:01 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ const char*	SpanTooShort::what( void ) const throw() {
 
 /* Member functions ********************************************************* */
 
+int	Span::at( size_t i ) const {
+	return (_vec[i]);
+}
+
 void	Span::addNumber( int n ) {
 	if (_vec.size() == _capacity)
 		throw (CapacityReached(_capacity));
@@ -53,11 +57,13 @@ void	Span::addNumber( int n ) {
 		_vec.push_back(n);
 }
 
-int	RandomNumber( void ) { return (std::rand() % 100); }
+int	RandomNumber( void ) { return (std::rand() % 10000); }
 
 void	Span::fillSpan( void ) {
 	std::srand( unsigned( std::time(0) ) );
-	std::generate(_vec.begin(), _vec.end(), RandomNumber);
+	_vec.clear();
+	_vec.reserve(_capacity);
+	std::generate_n(std::back_inserter(_vec), _capacity, RandomNumber);
 }
 
 unsigned int	Span::shortestSpan( void ) const {
@@ -85,18 +91,3 @@ unsigned int	Span::longestSpan( void ) const {
 	std::sort(sorted_vec.begin(), sorted_vec.end());
 	return (abs(sorted_vec.back() - sorted_vec.front()));
 }
-
-/* Redirection operator overload ******************************************** */
-
-// std::ostream&	operator<<(std::ostream& os, const Span& src) {
-// 	if (src._capacity < 4) {
-		
-// 	}
-// 	else {
-// 		os << "{ 0: " << src._vec[0] << std::endl;
-// 		os << "{ 0: " << src._vec[1] << std::endl;
-
-// 		os << "{ 0: " << src._vec[0] << std::endl;
-// 		os << "{ 0: " << src._vec[_capacity - 1] << std::endl;
-// 	}
-// }
