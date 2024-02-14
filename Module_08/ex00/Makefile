@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/14 09:03:50 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/14 09:16:55 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ debug:			fclean
 project_logo:
 				@echo "${RED}   ___     _     _________     _     ____"
 				@echo "  /   \   / \   /         \   / \   /    \ "
-				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_06${RED} ) ( - ) ( ${CYAN}ex01${RED} )"
+				@echo " ( ${CYAN}C++${RED} ) ( - ) ( ${CYAN}Module_08${RED} ) ( - ) ( ${CYAN}ex00${RED} )"
 				@echo "  \___/   \_/   \_________/   \_/   \____/${NC}"
 				@echo "\n               ${NC}a 42 project by ${BOLD}Théo Zanchi${NC}\n"
 
