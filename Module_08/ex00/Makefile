@@ -6,19 +6,20 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/09 16:38:18 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/14 09:03:50 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -g -Og -std=c++98 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		+=	-I$(patsubst %/,%,$(patsubst ./%,%,$(SRCS_DIR)))
 NAME		=	easyfind
 
 # Directories
 SRCS_DIR	=	./src/
 INCS_DIR	=	./inc/
-OBJ_DIR		=	${SRCS_DIR}.o
+OBJ_DIR		=	./obj/
 
 # Colours, symbols and utils
 GREEN		=	\033[1;32m
@@ -37,7 +38,6 @@ SRC_NR		=	$(words ${SRCS})
 OBJS		=	$(patsubst ${SRCS_DIR}%, ${OBJ_DIR}/%, $(SRCS:.cpp=.o))
 
 all:			project_logo ${NAME}
-
 
 ${NAME}:		${OBJS}
 				@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
@@ -64,8 +64,20 @@ fclean:			clean
 				@echo "Removing executable from root"
 				@rm -f ${NAME}
 
-re:				fclean all
+re:				fclean
+				@echo "\n${GREEN}COMPILING WITHOUT DEBUG FLAG${NC}\n"
+				@make --no-print-directory all
 
+go:				all
+				@./${NAME}
+
+vgo:			all
+				valgrind -s --leak-check=full ./${NAME}
+
+debug:			fclean
+				$(eval CFLAGS += -g)
+				@echo "\n${GREEN}COMPILING WITH DEBUG FLAG${NC}\n"
+				@make --no-print-directory all
 
 project_logo:
 				@echo "${RED}   ___     _     _________     _     ____"
