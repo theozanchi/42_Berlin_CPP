@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:49:16 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 18:08:16 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/19 18:57:10 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	main( int argc, char **argv ) {
 	else {
 		try {
 			RPN	rpn;
-			rpn.fillStacks(argv[1]);
-			std::cout << rpn.compute() << std::endl;
+			std::cout << rpn.compute(argv[1]) << std::endl;
 		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << std::endl;

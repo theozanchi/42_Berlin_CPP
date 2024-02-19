@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:54:12 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 18:19:13 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/19 18:55:29 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 RPN::RPN() {}
 
-RPN::RPN( const RPN& src ) { *this = src; }
+RPN::RPN( const RPN& src ) { _stack = src._stack; }
 
 RPN& RPN::operator=( const RPN& src ) {
 	if (this != &src) {
-		*this = src;
+		_stack = src._stack;
 	}
 	return (*this);
 }
@@ -29,46 +29,46 @@ RPN::~RPN() {}
 
 /* Member functions ********************************************************* */
 
-void	RPN::computeTopTwo( void ) {
-	int	temp = _values.top();
-	_values.pop();
-	
-	switch (char op = _ops.top()) {
+void	RPN::computeTopTwo( const char& op ) {
+	int	temp2 = _stack.top();
+	_stack.pop();
+	int	temp1 = _stack.top();
+	_stack.pop();
+
+	switch (op) {
 		case '+':
-			// std::cout << _values.top() << " " << op << " " << temp << std::endl;
-			_values.top() = temp + _values.top();
+			_stack.push(temp1 + temp2);
 			break;
 		case '-':
-			// std::cout << _values.top() << " " << op << " " << temp << std::endl;
-			_values.top() = temp - _values.top();
+			_stack.push(temp1 - temp2);
 			break;
 		case '*':
-			// std::cout << _values.top() << " " << op << " " << temp << std::endl;
-			_values.top() = temp * _values.top();
+			_stack.push(temp1 * temp2);
 			break;
 		case '/':
-			// std::cout << _values.top() << " " << op << " " << temp << std::endl;
-			_values.top() = temp / _values.top();
+			if (temp2 == 0)
+				throw (std::invalid_argument("Error: division by zero"));
+			_stack.push(temp1 / temp2);
 			break;
-		default:
-			throw (std::invalid_argument("Error"));
 	}
-	_ops.pop();
 }
 
-void	RPN::fillStacks( const std::string& str ) {
-	for (std::string::const_reverse_iterator rit = str.rbegin(); rit < str.rend(); ++rit) {
-		if (isdigit(*rit))
-			_values.push(*rit - 48);
-		else if (*rit == ' ')
+bool	isoperand( const char& c ) {
+	return (c == '+' || c == '-' || c == '*' || c == '/');
+}
+
+int	RPN::compute( const std::string& str ) {
+	for (std::string::const_iterator it = str.begin(); it < str.end(); ++it) {
+		if (isdigit(*it))
+			_stack.push(*it - '0');
+		else if (isspace(*it))
 			continue;
+		else if (isoperand(*it))
+			computeTopTwo(*it);
 		else
-			_ops.push(*rit);
+			throw (std::invalid_argument("Error: unexpected symbol"));
 	}
-}
-
-int	RPN::compute( void ) {
-	while (_values.size() != 1)
-		computeTopTwo();
-	return (_values.top());
+	if (_stack.size() != 1)
+		throw (std::invalid_argument("Error: invalid expression"));
+	return (_stack.top());
 }

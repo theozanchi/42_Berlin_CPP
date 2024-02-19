@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:54:15 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 18:06:34 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/19 18:49:28 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 
 class RPN {
 private:
-	std::stack<int>		_values;
-	std::stack<char>	_ops;
+	std::stack<int>		_stack;
 
-	void	computeTopTwo( void );
+	void	computeTopTwo( const char& op );
 
 public:
 	RPN();
@@ -31,8 +30,7 @@ public:
 	RPN& operator=( const RPN& src );
 	~RPN();
 
-	void	fillStacks( const std::string& str );
-	int		compute( void );
+	int		compute( const std::string& str );
 };
 
 #endif
