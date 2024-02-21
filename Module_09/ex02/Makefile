@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/20 09:57:12 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/21 18:58:28 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ NC			=	\033[0m
 BOLD		=	\033[1m
 TICK		=	✓
 
-SRC			=	_utils.cpp \
-				main.cpp \
+SRC			=	main.cpp \
+				PmergeMeDeq.cpp \
 				PmergeMeVec.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})

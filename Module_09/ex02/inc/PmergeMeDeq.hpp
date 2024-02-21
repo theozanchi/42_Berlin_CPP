@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMeVec.hpp                                    :+:      :+:    :+:   */
+/*   PmergeMeDeq.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/21 19:07:58 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/21 18:55:58 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEMEVEC_HPP
-# define PMERGEMEVEC_HPP
+#ifndef PMERGEMEDEQ_HPP
+# define PMERGEMEDEQ_HPP
 
 # include <cstdlib>
 # include <iostream>
 # include <utility>
 # include <algorithm>
 # include <functional>
-# include <vector>
-# include <stdexcept>
+# include <deque>
 
-class PmergeMeVec {
+class PmergeMeDeq {
 private:
 	int									_numberOfPairs;
 	int									_struggler;
 
-	std::vector<std::pair <int, int> >	_pairs;
-	std::vector<int>					_mainChain, _pend, _jacobsthalSuite, _insertionIndexes;
+	std::deque<std::pair <int, int> >	_pairs;
+	std::deque<int>						_mainChain, _pend, _jacobsthalSuite, _insertionIndexes;
 
 	clock_t								_start, _end;
 
@@ -35,15 +34,15 @@ private:
 	void						createMainChainAndPend( void );
 	void						generateJacobsthalSuite( void );
 	void						generateInsertionIndexes( void );
-	std::vector<int>::iterator	getPositionInMain( const int& i );
+	std::deque<int>::iterator	getPositionInMain( const int& i );
 	void						insertPendInMain( void );
 	void						insertStruggler( void );
 
 public:
-	PmergeMeVec( int argc, char **argv );
-	PmergeMeVec( const PmergeMeVec& src );
-	PmergeMeVec& operator=( const PmergeMeVec& src );
-	~PmergeMeVec();
+	PmergeMeDeq( int argc, char **argv );
+	PmergeMeDeq( const PmergeMeDeq& src );
+	PmergeMeDeq& operator=( const PmergeMeDeq& src );
+	~PmergeMeDeq();
 
 	void	sort( void );
 
@@ -54,6 +53,6 @@ public:
 	void	displayHead( void ) const;
 };
 
-std::ostream&	operator<<(std::ostream& os, const PmergeMeVec& src);
+std::ostream&	operator<<(std::ostream& os, const PmergeMeDeq& src);
 
 #endif
