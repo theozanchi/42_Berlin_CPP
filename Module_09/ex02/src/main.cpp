@@ -6,12 +6,11 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:22 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 21:08:25 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/20 09:50:02 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
-#include <vector>
+#include "PmergeMeVec.hpp"
 
 int	main( int argc, char **argv ) {
 	if (argc < 3) {
@@ -20,7 +19,7 @@ int	main( int argc, char **argv ) {
 	}
 	else {
 		std::cout << "\033[1;32mTest with vec\033[0m" << std::endl;
-		PmergeMe<std::vector<int> >	vec(argc - 1, argv + 1);
+		PmergeMeVec	vec(argc - 1, argv + 1);
 		
 		vec.sort();
 		vec.displayPairs();
