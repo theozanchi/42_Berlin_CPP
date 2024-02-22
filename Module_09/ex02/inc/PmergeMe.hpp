@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/22 09:31:09 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 10:42:08 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <algorithm>
 # include <functional>
 # include <stdexcept>
+# include <limits>
 
 template <typename Container, typename Pair>
 class PmergeMe {
 private:
-	int			_numberOfPairs;
 	int			_struggler;
 
 	Pair		_pairs;
@@ -31,7 +31,8 @@ private:
 
 	clock_t		_start, _end;
 
-	void							sortPairs( void );
+	int								extractAndCheckArg( const char* str );
+
 	void							createMainChainAndPend( void );
 	void							generateJacobsthalSuite( void );
 	void							generateInsertionIndexes( void );
@@ -40,6 +41,7 @@ private:
 	void							insertStruggler( void );
 
 public:
+	PmergeMe();
 	PmergeMe( int argc, char **argv );
 	PmergeMe( const PmergeMe& src );
 	PmergeMe& operator=( const PmergeMe& src );

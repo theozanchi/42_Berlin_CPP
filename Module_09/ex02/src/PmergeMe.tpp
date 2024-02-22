@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:16 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/22 09:35:21 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 10:42:53 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,28 @@
 /* Constructors, assignment operator and destructor ************************* */
 
 template <typename Container, typename Pair>
+PmergeMe<Container, Pair>::PmergeMe() {}
+
+template <typename Container, typename Pair>
 PmergeMe<Container, Pair>::PmergeMe( int argc, char **argv ) {
-	if (argc % 2 == 0) {
-		_numberOfPairs = argc / 2;
-		_struggler = -1;
+	int	i, j;
+
+	while (argc >= 2) {
+		i = extractAndCheckArg(*argv);
+		j = extractAndCheckArg(*(argv + 1));
+		if (i > j)
+			_pairs.push_back(std::make_pair(i, j));
+		else
+			_pairs.push_back(std::make_pair(j, i));
+		argv += 2;
+		argc -= 2;
 	}
-	else {
-		_numberOfPairs = (argc - 1) / 2;
-		_struggler = atoi(argv[argc - 1]);
-	}
-	for (int i = 0; i < _numberOfPairs; ++i) {
-		_pairs.push_back(std::make_pair(atoi(argv[i * 2]), atoi(argv[i * 2 + 1])));
-	}
+	_struggler = (argc == 1) ? extractAndCheckArg(*argv) : -1;
 }
 
 template <typename Container, typename Pair>
 PmergeMe<Container, Pair>::PmergeMe( const PmergeMe& src )
-:	_numberOfPairs( src._numberOfPairs ),
-	_struggler ( src._struggler )
+:	_struggler ( src._struggler )
 {
 	_pairs = src._pairs;
 	_mainChain = src._mainChain;
@@ -43,7 +47,6 @@ PmergeMe<Container, Pair>::PmergeMe( const PmergeMe& src )
 template <typename Container, typename Pair>
 PmergeMe<Container, Pair>& PmergeMe<Container, Pair>::operator=( const PmergeMe& src ) {
 	if (this != &src) {
-		_numberOfPairs = src._numberOfPairs;
 		_pairs = src._pairs;
 		_mainChain = src._mainChain;
 		_pend = src._pend;
@@ -62,7 +65,6 @@ template <typename Container, typename Pair>
 void	PmergeMe<Container, Pair>::sort( void ) {
 	_start = clock();
 
-	sortPairs();
 	createMainChainAndPend();
 	generateJacobsthalSuite();
 	generateInsertionIndexes();
@@ -74,22 +76,41 @@ void	PmergeMe<Container, Pair>::sort( void ) {
 
 /* Private functions ******************************************************** */
 
-template <typename Container, typename Pair>
-void	PmergeMe<Container, Pair>::sortPairs( void ) {
-	typename Pair::iterator	it;
-
-	for (it = _pairs.begin(); it < _pairs.end(); ++it) {
-		if (it->first < it->second)
-			std::swap(it->first, it->second);
+bool	isNotDigits( const char* str ) {
+	while (*str) {
+		if (!isdigit(*str++))
+			return (true);
 	}
-	std::sort(_pairs.begin(), _pairs.end());
+	return (false);
+}
+
+template <typename Container, typename Pair>
+int	PmergeMe<Container, Pair>::extractAndCheckArg( const char* str ) {
+	if (isNotDigits(str)) {
+		throw (std::invalid_argument("Error: only positive int supported"));
+		return (-1);
+	}
+	
+	char*	endPtr;
+	double	arg = strtod(str, &endPtr);
+	
+	if (*endPtr != '\0') {
+		throw (std::invalid_argument("Error: impossible to convert arg"));
+		return (-1);
+	}
+	else if (arg > std::numeric_limits<int>::max()) {
+		throw (std::invalid_argument("Error: only positive int supported"));
+		return (-1);
+	}
+	return (static_cast<int>(arg));
 }
 
 template <typename Container, typename Pair>
 void	PmergeMe<Container, Pair>::createMainChainAndPend( void ) {
-	for (int i = 0; i < _numberOfPairs; ++i) {
-		_mainChain.push_back(_pairs[i].first);
-		_pend.push_back(_pairs[i].second);
+	typename Pair::iterator	it;
+	for (it = _pairs.begin(); it < _pairs.end(); ++it) {
+		_mainChain.push_back(it->first);
+		_pend.push_back(it->second);
 	}
 	_mainChain.insert(_mainChain.begin(), _pend[0]);
 }
@@ -180,7 +201,7 @@ void	PmergeMe<Container, Pair>::displayAll( void ) const {
 		typename Pair::const_iterator	pit;
 
 		for (pit = _pairs.begin(); pit < _pairs.end(); ++pit) {
-			std::cout << pit->first << " " << pit->second << " ";
+			std::cout << pit->second << " " << pit->first << " ";
 		}
 		if (_struggler > 0)
 			std::cout << _struggler;
@@ -200,7 +221,7 @@ void	PmergeMe<Container, Pair>::displayHead( void ) const {
 		typename Pair::const_iterator	pit = _pairs.begin();
 
 		for (int i = 0; i < 2 && pit < _pairs.end(); ++i, ++pit) {
-			std::cout << pit->first << " " << pit->second << " ";
+			std::cout << pit->second << " " << pit->first << " ";
 		}
 	}
 	if (getSize() > 4)
