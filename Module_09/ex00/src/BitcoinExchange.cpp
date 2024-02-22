@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:27:32 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 15:56:17 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:29:17 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ float	BitcoinExchange::getRate( int date ) const {
 		std::map<int, float>::const_iterator it = _dataBase.begin();
 		while (it->first < date && it != _dataBase.end())
 			++it;
-		if (it != _dataBase.end())
+		if (it == _dataBase.begin())
 			return (it->second);
 		else
-			return (NAN);
+			return ((--it)->second);
 	}
 }
 

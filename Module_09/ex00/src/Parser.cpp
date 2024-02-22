@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:50:35 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 16:40:08 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:25:54 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ float	Parser::extractValue( const std::string& line, const char del ) {
 	double		rate = std::strtod(rateStr.c_str(), &endPtr);
 	if (*endPtr != '\0')
 		return (NAN);
-	else if (rate > std::numeric_limits<int>::max())
+	else if (rate > std::numeric_limits<int>::max() / 1000 || (del == '|' && rate > 1000))
 		return (INFINITY);
 	else
 		return (rate);
