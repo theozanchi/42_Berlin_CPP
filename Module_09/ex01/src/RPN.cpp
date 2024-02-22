@@ -6,49 +6,38 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:54:12 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 18:55:29 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:57:19 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-/* Constructors, assignment operator and destructor ************************* */
-
-RPN::RPN() {}
-
-RPN::RPN( const RPN& src ) { _stack = src._stack; }
-
-RPN& RPN::operator=( const RPN& src ) {
-	if (this != &src) {
-		_stack = src._stack;
-	}
-	return (*this);
-}
-
-RPN::~RPN() {}
-
 /* Member functions ********************************************************* */
 
-void	RPN::computeTopTwo( const char& op ) {
-	int	temp2 = _stack.top();
-	_stack.pop();
-	int	temp1 = _stack.top();
-	_stack.pop();
+void	RPN::computeTopTwo( std::stack<int>& stack, const char& op ) {
+	if (stack.empty())
+		throw (std::invalid_argument("Error: wrong expression"));
+	int	temp2 = stack.top();
+	stack.pop();
+	if (stack.empty())
+		throw (std::invalid_argument("Error: wrong expression"));
+	int	temp1 = stack.top();
+	stack.pop();
 
 	switch (op) {
 		case '+':
-			_stack.push(temp1 + temp2);
+			stack.push(temp1 + temp2);
 			break;
 		case '-':
-			_stack.push(temp1 - temp2);
+			stack.push(temp1 - temp2);
 			break;
 		case '*':
-			_stack.push(temp1 * temp2);
+			stack.push(temp1 * temp2);
 			break;
 		case '/':
 			if (temp2 == 0)
 				throw (std::invalid_argument("Error: division by zero"));
-			_stack.push(temp1 / temp2);
+			stack.push(temp1 / temp2);
 			break;
 	}
 }
@@ -58,17 +47,19 @@ bool	isoperand( const char& c ) {
 }
 
 int	RPN::compute( const std::string& str ) {
+	std::stack<int>	stack;
+
 	for (std::string::const_iterator it = str.begin(); it < str.end(); ++it) {
 		if (isdigit(*it))
-			_stack.push(*it - '0');
+			stack.push(*it - '0');
 		else if (isspace(*it))
 			continue;
 		else if (isoperand(*it))
-			computeTopTwo(*it);
+			computeTopTwo(stack, *it);
 		else
 			throw (std::invalid_argument("Error: unexpected symbol"));
 	}
-	if (_stack.size() != 1)
+	if (stack.size() != 1)
 		throw (std::invalid_argument("Error: invalid expression"));
-	return (_stack.top());
+	return (stack.top());
 }
