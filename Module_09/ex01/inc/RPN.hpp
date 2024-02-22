@@ -6,16 +6,15 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:54:15 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 18:49:28 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:38:55 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
 
+# include <cstdlib>
 # include <stack>
-# include <string>
-# include <stdexcept>
 # include <iostream>
 
 class RPN {

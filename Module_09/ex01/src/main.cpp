@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:49:16 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/19 19:32:37 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:39:23 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int	main( int argc, char **argv ) {
 		try {
 			RPN	rpn;
 			std::cout << rpn.compute(argv[1]) << std::endl;
+			return (EXIT_SUCCESS);
 		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << std::endl;
+			return (EXIT_FAILURE);
 		}
 	}
 }
