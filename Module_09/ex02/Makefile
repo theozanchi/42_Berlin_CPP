@@ -6,7 +6,7 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/22 09:41:28 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/22 09:54:01 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,11 +68,12 @@ re:				fclean
 				@echo "\n${GREEN}COMPILING WITHOUT DEBUG FLAG${NC}\n"
 				@make --no-print-directory all
 
+
 go:				all
-				@./${NAME} $(ARGS)
+				@./${NAME} `shuf -i 1-1000 -n 3000 | tr "\n" " " `
 
 vgo:			all
-				valgrind -s --leak-check=full ./${NAME} $(ARGS)
+				valgrind -s --leak-check=full ./${NAME} `shuf -i 1-1000 -n 3000 | tr "\n" " " `
 
 debug:			fclean
 				$(eval CFLAGS += -g)
