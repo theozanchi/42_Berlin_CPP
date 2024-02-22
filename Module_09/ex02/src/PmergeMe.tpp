@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:16 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/22 10:42:53 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:09:42 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ template <typename Container, typename Pair>
 void	PmergeMe<Container, Pair>::sort( void ) {
 	_start = clock();
 
+	std::sort(_pairs.begin(), _pairs.end(), comparePairs);
 	createMainChainAndPend();
 	generateJacobsthalSuite();
 	generateInsertionIndexes();
@@ -103,6 +104,11 @@ int	PmergeMe<Container, Pair>::extractAndCheckArg( const char* str ) {
 		return (-1);
 	}
 	return (static_cast<int>(arg));
+}
+
+template <typename Container, typename Pair>
+bool	PmergeMe<Container, Pair>::comparePairs( std::pair<int, int>& a, std::pair<int, int>& b) {
+	return (a.first < b.first);
 }
 
 template <typename Container, typename Pair>
@@ -226,6 +232,8 @@ void	PmergeMe<Container, Pair>::displayHead( void ) const {
 	}
 	if (getSize() > 4)
 		std::cout << "[...]";
+	else if (_struggler > 0)
+		std::cout << _struggler;
 }
 
 /* Redirection operator overload functions ********************************** */

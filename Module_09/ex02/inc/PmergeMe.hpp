@@ -6,7 +6,7 @@
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/22 10:42:08 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:08:06 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ private:
 	clock_t		_start, _end;
 
 	int								extractAndCheckArg( const char* str );
+	static bool						comparePairs( std::pair<int, int>& a, std::pair<int, int>& b);
 
 	void							createMainChainAndPend( void );
 	void							generateJacobsthalSuite( void );
