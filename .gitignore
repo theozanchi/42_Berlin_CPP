@@ -79,6 +79,9 @@ templates
 iter
 array
 
+##Module_08
+mutant_stack
+
 ##Module_09
 btc
 RPN
