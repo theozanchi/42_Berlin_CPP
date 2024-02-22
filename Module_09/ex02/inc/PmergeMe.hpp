@@ -1,49 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMeVec.hpp                                    :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:05:14 by tzanchi           #+#    #+#             */
-/*   Updated: 2024/02/21 19:07:58 by tzanchi          ###   ########.fr       */
+/*   Updated: 2024/02/22 09:31:09 by tzanchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEMEVEC_HPP
-# define PMERGEMEVEC_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 # include <cstdlib>
 # include <iostream>
 # include <utility>
 # include <algorithm>
 # include <functional>
-# include <vector>
 # include <stdexcept>
 
-class PmergeMeVec {
+template <typename Container, typename Pair>
+class PmergeMe {
 private:
-	int									_numberOfPairs;
-	int									_struggler;
+	int			_numberOfPairs;
+	int			_struggler;
 
-	std::vector<std::pair <int, int> >	_pairs;
-	std::vector<int>					_mainChain, _pend, _jacobsthalSuite, _insertionIndexes;
+	Pair		_pairs;
+	Container	_mainChain, _pend, _jacobsthalSuite, _insertionIndexes;
 
-	clock_t								_start, _end;
+	clock_t		_start, _end;
 
-	void						sortPairs( void );
-	void						createMainChainAndPend( void );
-	void						generateJacobsthalSuite( void );
-	void						generateInsertionIndexes( void );
-	std::vector<int>::iterator	getPositionInMain( const int& i );
-	void						insertPendInMain( void );
-	void						insertStruggler( void );
+	void							sortPairs( void );
+	void							createMainChainAndPend( void );
+	void							generateJacobsthalSuite( void );
+	void							generateInsertionIndexes( void );
+	typename Container::iterator	getPositionInMain( const int& i );
+	void							insertPendInMain( void );
+	void							insertStruggler( void );
 
 public:
-	PmergeMeVec( int argc, char **argv );
-	PmergeMeVec( const PmergeMeVec& src );
-	PmergeMeVec& operator=( const PmergeMeVec& src );
-	~PmergeMeVec();
+	PmergeMe( int argc, char **argv );
+	PmergeMe( const PmergeMe& src );
+	PmergeMe& operator=( const PmergeMe& src );
+	~PmergeMe();
 
 	void	sort( void );
 
@@ -54,6 +54,9 @@ public:
 	void	displayHead( void ) const;
 };
 
-std::ostream&	operator<<(std::ostream& os, const PmergeMeVec& src);
+# include "PmergeMe.tpp"
+
+template <typename Container, typename Pair>
+std::ostream&	operator<<(std::ostream& os, const PmergeMe<Container, Pair>& src);
 
 #endif

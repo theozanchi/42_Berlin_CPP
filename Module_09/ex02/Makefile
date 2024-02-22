@@ -6,13 +6,14 @@
 #    By: tzanchi <tzanchi@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/08 10:19:23 by tzanchi           #+#    #+#              #
-#    Updated: 2024/02/21 18:58:28 by tzanchi          ###   ########.fr        #
+#    Updated: 2024/02/22 09:41:28 by tzanchi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Compiler targets and libraries
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		+=	-I$(patsubst %/,%,$(patsubst ./%,%,$(SRCS_DIR)))
 NAME		=	PmergeMe
 
 # Directories
@@ -29,9 +30,7 @@ NC			=	\033[0m
 BOLD		=	\033[1m
 TICK		=	✓
 
-SRC			=	main.cpp \
-				PmergeMeDeq.cpp \
-				PmergeMeVec.cpp
+SRC			=	main.cpp
 
 SRCS		=	$(addprefix ${SRCS_DIR}, ${SRC})
 SRC_NR		=	$(words ${SRCS})
